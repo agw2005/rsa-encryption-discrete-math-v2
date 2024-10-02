@@ -1,3 +1,13 @@
+:root {
+  --primary-color: #729b79;
+  --secondary-color: #b09a82;
+  --primary-border: 0.3rem solid #583E2;
+  --box-border-test1: 0.3rem solid black;
+  --box-border-test2: 0.3rem solid red;
+  --box-border-test2: 0.3rem solid blue;
+  --box-border-test2: 0.3rem solid gray;
+}
+
 html,
 body,
 h1 {
@@ -6,12 +16,16 @@ h1 {
 }
 
 body {
-  background-image: url("/windows-xp.jpg");
+  background-image: url("/pixel-bg.png");
+  background-repeat: no-repeat;
+  background-color: var(--primary-color);
 }
 
+/* !!! Header Section */
+
 header {
-  padding: 0;
-  background-color: #729b79;
+  padding: 1rem;
+  background-color: var(--primary-color);
   position: fixed;
   width: 100%;
 
@@ -28,6 +42,37 @@ header {
   gap: 2rem;
 }
 
-header > * {
-  border: 0.3rem solid red;
+.left-header > img {
+  max-height: 2rem;
 }
+
+.right-header {
+  max-height: 4rem;
+  margin: 0;
+  margin-right: 1rem;
+}
+
+/* Header Section !!! */
+
+/* !!! Message Section */
+
+.message-section {
+  position: absolute;
+  width: 100%;
+  top: 15rem;
+
+  border: var(--box-border-test1);
+  background-color: red;
+}
+
+.message-section > * {
+  border: var(--box-border-test2);
+}
+
+.content-body {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* Message Section !!! */
