@@ -2,6 +2,7 @@ function App() {
   let contentMessage =
     "“YOU HAVE SO MUCH BUT ARE ALWAYS HUNGRY FOR MORE. STOP LOOKING UP AT EVERYTHING YOU DON'T HAVE AND LOOK AROUND AT EVERYTHING YOU DO.“";
   let contentSender = "Rupi Kaur";
+  let name = "Kurt Cobain";
 
   return (
     <>
@@ -19,18 +20,27 @@ function App() {
       </header>
 
       <section className="message-section">
-        <div>
-          <p>Name-Message-Toggle</p>
+        <div className="message-toggle">
+          <p>
+            <strong>{name}</strong>
+          </p>
         </div>
         <div className="content-body">
           <img src="/kurner.png" alt="profile-pic" />
           <div className="content-text">
-            <p>{contentMessage}</p>
-            <p>–{contentSender}</p>
+            <strong>
+              <p>{contentMessage}</p>
+              <p>–{contentSender}</p>
+            </strong>
           </div>
         </div>
-        <div>
-          <p>Key-Toggle</p>
+        <div className="keys">
+          <div className="pub-key">
+            <p>public-key</p>
+          </div>
+          <div className="priv-key">
+            <p>private-key</p>
+          </div>
         </div>
       </section>
 

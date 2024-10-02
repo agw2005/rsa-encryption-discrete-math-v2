@@ -1,11 +1,11 @@
 :root {
   --primary-color: #729b79;
   --secondary-color: #b09a82;
-  --primary-border: 0.3rem solid #583E2;
-  --box-border-test1: 0.3rem solid black;
-  --box-border-test2: 0.3rem solid red;
-  --box-border-test2: 0.3rem solid blue;
-  --box-border-test2: 0.3rem solid gray;
+  --primary-border: 0.3rem solid #583e23;
+  --box-border-test-black: 0.3rem solid black;
+  --box-border-test-red: 0.3rem solid red;
+  --box-border-test-blue: 0.3rem solid blue;
+  --box-border-test-gray: 0.3rem solid gray;
 }
 
 html,
@@ -34,6 +34,8 @@ header {
   justify-content: space-between;
 
   filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.5));
+
+  z-index: 3;
 }
 
 .left-header {
@@ -58,21 +60,45 @@ header {
 
 .message-section {
   position: absolute;
-  width: 100%;
   top: 15rem;
-
-  border: var(--box-border-test1);
-  background-color: red;
-}
-
-.message-section > * {
-  border: var(--box-border-test2);
+  width: 75%;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
 }
 
 .content-body {
   display: flex;
   align-items: center;
   gap: 2rem;
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  padding: 4rem 2rem 1rem 2rem;
+}
+
+.content-text {
+  position: relative;
+}
+
+.message-toggle {
+  position: relative;
+  top: 2rem;
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  width: fit-content;
+  padding: 0.1rem 2rem;
+}
+
+.keys {
+  display: flex;
+  justify-content: flex-end;
+  border: var(--box-border-test-red);
+}
+
+.keys > * {
+  position: relative;
+  bottom: 4rem;
+  padding: 0rem 2rem;
+  border: var(--primary-border);
 }
 
 /* Message Section !!! */
