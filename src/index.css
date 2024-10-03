@@ -25,9 +25,14 @@ body {
   background-color: var(--primary-color);
   font-family: "Pixelify Sans", sans-serif;
   color: var(--tertiary-color);
-  font-weight: 700;
-  //letter-spacing: -0.05rem;
-  //word-spacing: 0.5rem;
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -0.05rem;
+  word-spacing: 0.5rem;
+}
+
+p {
+  margin: 0;
 }
 
 /* !!! Header Section */
@@ -103,7 +108,7 @@ header {
   border: var(--primary-border);
   background-color: var(--secondary-color);
   width: fit-content;
-  padding: 0.1rem 2rem;
+  padding: 0.3rem 3rem;
 }
 
 .profile-pic {
@@ -119,8 +124,8 @@ header {
 
 .keys > div {
   position: relative;
-  bottom: 3.7rem;
-  padding: 0rem 2rem;
+  bottom: 3.2rem;
+  padding: 0.3rem 3rem;
   border: var(--primary-border);
   background-color: var(--secondary-color);
   text-transform: uppercase;

@@ -27,7 +27,7 @@ function App() {
           <img className="profile-pic" src="/kurner.png" alt="profile-pic" />
           <div className="content-text">
             <p>{contentMessage}</p>
-            <p>–{contentSender}</p>
+            <p>– {contentSender}</p>
           </div>
         </div>
         <div className="keys">
