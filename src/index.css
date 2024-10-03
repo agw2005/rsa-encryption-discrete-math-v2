@@ -38,7 +38,7 @@ p {
 /* !!! Header Section */
 
 header {
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   background-color: var(--primary-color);
   position: fixed;
   width: 100%;
@@ -69,7 +69,9 @@ header {
 .right-header {
   max-height: 4rem;
   margin: 0;
-  margin-right: 1rem;
+  margin-right: 2rem;
+  position: relative;
+  top: 0.2rem;
 }
 
 .right-header:hover {
@@ -82,7 +84,7 @@ header {
 
 .message-section {
   position: absolute;
-  top: 15rem;
+  top: 9.5rem;
   width: 75%;
   margin-left: 12.5%;
   margin-right: 12.5%;
@@ -109,6 +111,11 @@ header {
   background-color: var(--secondary-color);
   width: fit-content;
   padding: 0.3rem 3rem;
+  cursor: pointer;
+}
+
+.message-toggle:hover {
+  background-color: var(--secondary-complement-color);
 }
 
 .profile-pic {
