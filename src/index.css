@@ -49,10 +49,18 @@ header {
   max-height: 2rem;
 }
 
+.left-header-nav:hover {
+  opacity: 0.8;
+}
+
 .right-header {
   max-height: 4rem;
   margin: 0;
   margin-right: 1rem;
+}
+
+.right-header:hover {
+  opacity: 0.8;
 }
 
 /* Header Section !!! */
@@ -100,6 +108,10 @@ header {
   bottom: 4rem;
   padding: 0rem 2rem;
   border: var(--primary-border);
+}
+
+.keys > p {
+  font-style: bold;
 }
 
 /* Message Section !!! */

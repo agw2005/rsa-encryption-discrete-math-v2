@@ -8,7 +8,7 @@ function App() {
     <>
       <header>
         <div className="left-header">
-          <img src="/nav.png" alt="nav-button" />
+          <img className="left-header-nav" src="/nav.png" alt="nav-button" />
           <img src="/picraft-logo.png" alt="logo" />
         </div>
 
