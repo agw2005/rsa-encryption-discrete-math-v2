@@ -23,6 +23,8 @@ body {
   background-position: center top;
   background-color: var(--primary-color);
   font-weight: 700;
+  letter-spacing: -0.05rem;
+  word-spacing: 0.5rem;
 }
 
 /* !!! Header Section */
@@ -89,6 +91,7 @@ header {
 
 .content-text {
   position: relative;
+  bottom: 2rem;
 }
 
 .message-toggle {
@@ -108,7 +111,7 @@ header {
 
 .keys > div {
   position: relative;
-  bottom: 2rem;
+  bottom: 3.7rem;
   padding: 0rem 2rem;
   border: var(--primary-border);
   background-color: var(--secondary-color);
