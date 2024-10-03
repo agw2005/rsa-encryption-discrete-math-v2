@@ -24,7 +24,7 @@ function App() {
           <p>{name}</p>
         </div>
         <div className="content-body">
-          <img src="/kurner.png" alt="profile-pic" />
+          <img className="profile-pic" src="/kurner.png" alt="profile-pic" />
           <div className="content-text">
             <p>{contentMessage}</p>
             <p>–{contentSender}</p>

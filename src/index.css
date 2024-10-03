@@ -103,6 +103,11 @@ header {
   padding: 0.1rem 2rem;
 }
 
+.profile-pic {
+  position: relative;
+  bottom: 0.75rem;
+}
+
 .keys {
   display: flex;
   justify-content: flex-end;
