@@ -21,17 +21,13 @@ function App() {
 
       <section className="message-section">
         <div className="message-toggle">
-          <p>
-            <strong>{name}</strong>
-          </p>
+          <p>{name}</p>
         </div>
         <div className="content-body">
           <img src="/kurner.png" alt="profile-pic" />
           <div className="content-text">
-            <strong>
-              <p>{contentMessage}</p>
-              <p>–{contentSender}</p>
-            </strong>
+            <p>{contentMessage}</p>
+            <p>–{contentSender}</p>
           </div>
         </div>
         <div className="keys">

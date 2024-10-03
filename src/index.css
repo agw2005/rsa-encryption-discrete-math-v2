@@ -20,6 +20,7 @@ body {
   background-repeat: no-repeat;
   background-position: center top;
   background-color: var(--primary-color);
+  font-weight: 700;
 }
 
 /* !!! Header Section */
@@ -100,18 +101,14 @@ header {
 .keys {
   display: flex;
   justify-content: flex-end;
-  border: var(--box-border-test-red);
+  z-index: 10;
 }
 
 .keys > * {
   position: relative;
-  bottom: 4rem;
   padding: 0rem 2rem;
   border: var(--primary-border);
-}
-
-.keys > p {
-  font-style: bold;
+  background-color: var(--secondary-color);
 }
 
 /* Message Section !!! */
