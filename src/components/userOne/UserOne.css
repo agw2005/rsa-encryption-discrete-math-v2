@@ -98,7 +98,7 @@ header {
 .keys {
   display: flex;
   justify-content: flex-end;
-  z-index: 10;
+  z-index: 2;
 }
 
 .keys > div {
@@ -120,3 +120,42 @@ header {
 }
 
 /* Message Section !!! */
+
+/* !!! Sidebar Section */
+
+nav {
+  padding: 1.5rem 2rem;
+  min-width: 15%;
+  min-height: 100%;
+  position: fixed;
+  z-index: 4;
+  background-color: var(--primary-color);
+  box-shadow: 15px 0px 15px 5px rgba(0, 0, 0, 0.5);
+}
+
+.nav-hidden {
+  transform: translateX(-110%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.nav-available {
+  transform: translateX(0%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.left-header-sidebar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.left-header-sidebar > img {
+  max-height: 2rem;
+}
+
+.left-header-nav-sidebar:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+/* Sidebar Section !!! */

@@ -11,6 +11,7 @@ const UserOne = () => {
   let privkey =
     "FP/KY+UNchKq4O0ufWoP4YZUVjq3/NyckJMeo8iV5wwPxtmXfbLWUVfdKKftFrjd";
   let [currentMessage, setCurrentMessage] = useState(contentMessage);
+  let [navVisible, setNavVisible] = useState(true);
 
   let handleClickKeys = (event: SyntheticEvent) => {
     let clickedElement = event.currentTarget as HTMLElement;
@@ -24,11 +25,20 @@ const UserOne = () => {
     }
   };
 
+  let handleClickNav = () => {
+    setNavVisible(!navVisible);
+  };
+
   return (
     <>
       <header>
         <div className="left-header">
-          <img className="left-header-nav" src="/nav.png" alt="nav-button" />
+          <img
+            onClick={handleClickNav}
+            className="left-header-nav"
+            src="/nav.png"
+            alt="nav-button"
+          />
           <img src="/picraft-logo.png" alt="logo" />
         </div>
 
@@ -38,6 +48,18 @@ const UserOne = () => {
           alt="encrypt-on"
         />
       </header>
+
+      <nav className={navVisible ? "nav-available" : "nav-hidden"}>
+        <div className="left-header-sidebar">
+          <img
+            onClick={handleClickNav}
+            className="left-header-nav-sidebar"
+            src="/nav.png"
+            alt="nav-button"
+          />
+          <img src="/picraft-logo.png" alt="logo" />
+        </div>
+      </nav>
 
       <section className="message-section">
         <div onClick={handleClickKeys} className="message-toggle">
