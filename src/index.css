@@ -1,68 +1,32 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --primary-color: #729b79;
+  --primary-complement-color: #9b7294;
+  --secondary-color: #b09a82;
+  --secondary-complement-color: #8298b0;
+  --tertiary-color: #583e23;
+  --primary-border: 0.3rem solid #583e23;
+  --box-border-test-black: 0.3rem solid black;
+  --box-border-test-red: 0.3rem solid red;
+  --box-border-test-blue: 0.3rem solid blue;
+  --box-border-test-gray: 0.3rem solid gray;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+html,
+body,
+h1 {
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  background-image: url("/pixel-bg.png");
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-color: var(--primary-color);
+  font-family: "Pixelify Sans", sans-serif;
+  color: var(--tertiary-color);
+  font-size: 27px;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  letter-spacing: -0.05rem;
+  word-spacing: 0.5rem;
 }
