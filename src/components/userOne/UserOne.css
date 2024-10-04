@@ -71,6 +71,9 @@ header {
 .content-text {
   position: relative;
   bottom: 2rem;
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .message-toggle {

@@ -1,3 +1,4 @@
+import { SyntheticEvent, useState } from "react";
 import "./userOne.css";
 
 const UserOne = () => {
@@ -9,6 +10,19 @@ const UserOne = () => {
     "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvPqYT5z5tcVYzVCJw+Is";
   let privkey =
     "FP/KY+UNchKq4O0ufWoP4YZUVjq3/NyckJMeo8iV5wwPxtmXfbLWUVfdKKftFrjd";
+  let [currentMessage, setCurrentMessage] = useState(contentMessage);
+
+  let handleClickKeys = (event: SyntheticEvent) => {
+    let clickedElement = event.currentTarget as HTMLElement;
+    let clickedElementClass = clickedElement.className;
+    if (clickedElementClass.includes("message-toggle")) {
+      setCurrentMessage(contentMessage);
+    } else if (clickedElementClass.includes("pub-key")) {
+      setCurrentMessage(pubkey);
+    } else if (clickedElementClass.includes("priv-key")) {
+      setCurrentMessage(privkey);
+    }
+  };
 
   return (
     <>
@@ -26,21 +40,21 @@ const UserOne = () => {
       </header>
 
       <section className="message-section">
-        <div className="message-toggle">
+        <div onClick={handleClickKeys} className="message-toggle">
           <p>{name}</p>
         </div>
         <div className="content-body">
           <img className="profile-pic" src="/kurner.png" alt="profile-pic" />
           <div className="content-text">
-            <p>{contentMessage}</p>
-            <p>– {contentSender}</p>
+            <p>{currentMessage}</p>
+            {currentMessage == contentMessage ? <p>– {contentSender}</p> : null}
           </div>
         </div>
         <div className="keys">
-          <div className="pub-key">
+          <div onClick={handleClickKeys} className="pub-key">
             <p>public-key</p>
           </div>
-          <div className="priv-key">
+          <div onClick={handleClickKeys} className="priv-key">
             <p>private-key</p>
           </div>
         </div>
