@@ -11,7 +11,8 @@ const UserOne = () => {
   let privkey =
     "FP/KY+UNchKq4O0ufWoP4YZUVjq3/NyckJMeo8iV5wwPxtmXfbLWUVfdKKftFrjd";
   let [currentMessage, setCurrentMessage] = useState(contentMessage);
-  let [navVisible, setNavVisible] = useState(true);
+  let [navVisible, setNavVisible] = useState(false);
+  let [encryptedOn, setEncryptedOn] = useState(true);
 
   let handleClickKeys = (event: SyntheticEvent) => {
     let clickedElement = event.currentTarget as HTMLElement;
@@ -29,6 +30,10 @@ const UserOne = () => {
     setNavVisible(!navVisible);
   };
 
+  let handleClickEncrypted = () => {
+    setEncryptedOn(!encryptedOn);
+  };
+
   return (
     <>
       <header>
@@ -43,8 +48,9 @@ const UserOne = () => {
         </div>
 
         <img
+          onClick={handleClickEncrypted}
           className="right-header"
-          src="toggle-encrypted-on.png"
+          src={`toggle-encrypted-${encryptedOn ? "on" : "off"}.png`}
           alt="encrypt-on"
         />
       </header>
