@@ -5,6 +5,10 @@ const UserOne = () => {
     "“YOU HAVE SO MUCH BUT ARE ALWAYS HUNGRY FOR MORE. STOP LOOKING UP AT EVERYTHING YOU DON'T HAVE AND LOOK AROUND AT EVERYTHING YOU DO.“";
   let contentSender = "Rupi Kaur";
   let name = "Kurt Cobain";
+  let pubkey =
+    "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvPqYT5z5tcVYzVCJw+Is";
+  let privkey =
+    "FP/KY+UNchKq4O0ufWoP4YZUVjq3/NyckJMeo8iV5wwPxtmXfbLWUVfdKKftFrjd";
 
   return (
     <>
