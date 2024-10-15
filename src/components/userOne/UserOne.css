@@ -202,16 +202,22 @@ nav > ul {
   padding: 0rem;
 }
 
-.nav-footer li {
-  margin-bottom: 0.5rem;
-  margin-top: 0.5rem;
-  letter-spacing: 0rem;
-  word-spacing: 0.1rem;
+li {
+  margin-bottom: 0.4rem;
+  margin-top: 0.4rem;
 }
 
 li:hover {
   opacity: 0.8;
   cursor: pointer;
+  text-decoration: underline;
+}
+
+.nav-footer li {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0rem;
+  word-spacing: 0.1rem;
 }
 
 /* Sidebar Section !!! */
