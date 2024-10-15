@@ -130,6 +130,8 @@ nav {
   position: fixed;
   z-index: 4;
   background-color: var(--primary-color);
+  letter-spacing: 0px;
+  color: white;
   box-shadow: 15px 0px 15px 5px rgba(0, 0, 0, 0.5);
 }
 
@@ -154,6 +156,60 @@ nav {
 }
 
 .left-header-nav-sidebar:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.analystic {
+  position: relative;
+  right: 0rem;
+  margin-top: 4rem;
+  width: 20rem;
+}
+
+.analystic:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+nav > p {
+  letter-spacing: 0.05rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+nav > ul {
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  /* border: var(--box-border-test-red); */
+  list-style-type: none;
+  padding: 0;
+  margin: 0rem 0rem 1rem 1rem;
+}
+
+.nav-footer {
+  /* border: var(--box-border-test-red); */
+  position: absolute;
+  width: 20rem;
+  bottom: 4rem;
+}
+
+.nav-footer > ul {
+  /* border: var(--box-border-test-red); */
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  font-family: Arial;
+  list-style-type: none;
+  padding: 0rem;
+}
+
+.nav-footer li {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0rem;
+  word-spacing: 0.1rem;
+}
+
+li:hover {
   opacity: 0.8;
   cursor: pointer;
 }

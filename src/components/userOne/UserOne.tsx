@@ -65,6 +65,43 @@ const UserOne = () => {
           />
           <img src="/picraft-logo.png" alt="logo" />
         </div>
+        <img
+          src="/profile-bar.png"
+          alt="Analystic SMPT"
+          className="analystic"
+        />
+        <hr />
+        <p>Analytics</p>
+        <ul>
+          <li>About SMTP</li>
+          <li>About Encryption</li>
+          <li>Management Emails</li>
+          <li>Create Work</li>
+          <li>Account Settings</li>
+        </ul>
+        <hr />
+        <p>User 1</p>
+        <ul>
+          <li>Send</li>
+          <li>Inbox</li>
+        </ul>
+        <p>User 2</p>
+        <ul>
+          <li>Send</li>
+          <li>Inbox</li>
+        </ul>
+        <p>Snooper</p>
+        <ul>
+          <li>Monitor 1</li>
+          <li>Recently Traffic</li>
+        </ul>
+        <section className="nav-footer">
+          <hr />
+          <ul>
+            <li>About Me</li>
+            <li>Help Me</li>
+          </ul>
+        </section>
       </nav>
 
       <section className="message-section">
