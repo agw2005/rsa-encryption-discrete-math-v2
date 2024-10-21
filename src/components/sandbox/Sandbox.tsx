@@ -1,4 +1,3 @@
-import React from "react";
 import "./Sandbox.css";
 
 const Sandbox = () => {
@@ -6,16 +5,36 @@ const Sandbox = () => {
     <>
       <div className="s-o-container">
         <div className="send-received">
-          <div>Send</div>
-          <div>Received</div>
+          <div id="send-option">Send</div>
+          <div id="receive-option">Received</div>
         </div>
         <div className="outer-body">
           <div className="inner-body">
-            <div className="form">
+            <div className="form-section">
               <form>
-                <input type="text" placeholder="deliver to..." />
-                <input type="text" placeholder="message subject..." />
+                <input
+                  type="text"
+                  name="deliver-to"
+                  id="deliver-to"
+                  placeholder="deliver to..."
+                />
+                <input
+                  type="text"
+                  name="message-subject"
+                  id="message-subject"
+                  placeholder="message subject..."
+                />
+                <textarea
+                  cols={7}
+                  name="message-content"
+                  id="message-content"
+                  placeholder="what message do you want to send?"
+                ></textarea>
               </form>
+              <div className="send-section">
+                <p>message sent will be encrypted</p>
+                <img src="/send.png" alt="" />
+              </div>
             </div>
           </div>
         </div>
