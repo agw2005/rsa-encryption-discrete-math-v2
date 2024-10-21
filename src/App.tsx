@@ -4,7 +4,7 @@ import UserOne from "./components/userOne/UserOne.tsx";
 function App() {
   return (
     <>
-      <Sandbox />
+      <UserOne />
     </>
   );
 }
