@@ -124,7 +124,7 @@ const UserOne = () => {
           </div>
         </div>
       </section>
-      <div className="s-o-container">
+      <section className="s-o-container">
         <div className="send-received">
           <div id="send-option">Send</div>
           <div id="receive-option">Received</div>
@@ -159,8 +159,7 @@ const UserOne = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="whitespace"></div>
+      </section>
     </>
   );
 };
