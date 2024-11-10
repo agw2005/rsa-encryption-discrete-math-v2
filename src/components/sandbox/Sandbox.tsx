@@ -97,6 +97,40 @@ const Sandbox = () => {
           </div>
         </div>
       </section>
+
+      <section className="s-o-container">
+        <div className="traffics">
+          <div id="traffic-one">Traffic 1</div>
+          <div id="traffic-two">Traffic 2</div>
+        </div>
+        <div className="outer-body">
+          <div className="inner-body">
+            <div className="content-container">
+              <div className="snooper-infos">
+                <img src="RunWTheWolf.png" alt="snooper-picture" />
+                <div className="snooper-name-info">
+                  <img src="RunWTheWolf-profile.png" alt="snooper-profile" />
+                  <p>RunWTheWolves</p>
+                </div>
+              </div>
+              <div className="snooper-message">
+                <p className="message-title">bank account report</p>
+                <p className="message-content">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Praesent gravida ullamcorper gravida. Curabitur mi nulla,
+                  lacinia ut tincidunt eget, faucibus sit amet ligula.
+                  Vestibulum ante ipsum primis in faucibus orci luctus et
+                  ultrices posuere cubilia curae; Suspendisse eget magna sit
+                  amet lacus convallis pretium. Fusce placerat mauris at
+                  sagittis sodales. Pellentesque non felis sit amet ante
+                  fermentum posuere ornare eget est. Nunc rutrum aliquam mi,
+                  quis consectetur turpis pellentesque eu. M
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </>
   );
 };

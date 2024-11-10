@@ -1,3 +1,7 @@
+p {
+  margin: 0;
+}
+
 /* !!! Header Section */
 
 header {
@@ -179,10 +183,6 @@ li:hover {
   padding: 0.3rem 3rem;
 }
 
-.message-toggle p {
-  margin: 0rem;
-}
-
 .profile-pic {
   position: relative;
   bottom: 0.75rem;
@@ -205,3 +205,133 @@ li:hover {
 }
 
 /* Message Section !!! */
+
+/* !!! S-O section */
+.s-o-container {
+  width: 75%;
+  margin: 0rem auto;
+  margin-top: 9.5rem;
+  margin-bottom: 30%;
+}
+
+.traffics {
+  height: 2.5rem;
+  max-width: 20rem;
+  min-width: 27rem;
+  padding: 0rem;
+  display: flex;
+}
+
+.traffics div {
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  width: 50%;
+  z-index: 1;
+  text-align: center;
+}
+
+#traffic-one:hover,
+#traffic-two:hover {
+  background-color: var(--border-color);
+  color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.outer-body {
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  width: 100%;
+  height: 50rem;
+  display: flex;
+  align-items: center; /* Vertically center child (inner-body class) */
+  justify-content: center; /* Horizontally center child (inner-body class) */
+}
+
+.inner-body {
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  /* background-color: red; */
+  height: 85%;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Vertically center child */
+  justify-content: center; /* Horizontally center child */
+  box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
+}
+
+.content-container {
+  height: 90%;
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Vertically center child */
+  justify-content: center; /* Horizontally center child */
+  gap: 3rem;
+}
+
+.snooper-infos {
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  height: 90%;
+  box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
+  padding: 1rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Vertically center child */
+  justify-content: center; /* Horizontally center child */
+}
+
+.snooper-name-info {
+  display: flex;
+  align-items: center; /* Vertically center child */
+  gap: 1rem;
+  padding-top: 1rem;
+}
+
+.snooper-message {
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  height: 90%;
+  box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
+  padding: 1rem 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Vertically center child */
+  justify-content: center; /* Horizontally center child */
+  gap: 2rem;
+}
+
+.message-content {
+  font-size: 1.2rem;
+  text-align: justify;
+}
+
+/* CUSTOM SCROLL BAR - from W3S */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* S-O section !!! */
+
+/* 
+  TODO:
+  divs in content-container is not responsive, fix it !
+*/
