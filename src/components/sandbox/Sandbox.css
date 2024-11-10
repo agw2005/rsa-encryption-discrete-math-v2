@@ -40,3 +40,168 @@ header img:hover {
 }
 
 /* Header Section !!! */
+
+/* !!! Sidebar Section */
+
+nav {
+  padding: 1.5rem 2rem;
+  min-width: 15%;
+  min-height: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 4;
+  background-color: var(--primary-color);
+  letter-spacing: 0px;
+  color: white;
+  box-shadow: 15px 0px 15px 5px rgba(0, 0, 0, 0.5);
+}
+
+.nav-hidden {
+  transform: translateX(-110%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.nav-available {
+  transform: translateX(-5%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.left-header-sidebar {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.left-header-sidebar > img {
+  max-height: 2rem;
+}
+
+.left-header-nav-sidebar:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+.analystic {
+  position: relative;
+  right: 0rem;
+  margin-top: 4rem;
+  width: 20rem;
+}
+
+.analystic:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+
+nav > p {
+  letter-spacing: 0.05rem;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+nav > ul {
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  /* border: var(--box-border-test-red); */
+  list-style-type: none;
+  padding: 0;
+  margin: 0rem 0rem 1rem 1rem;
+}
+
+.nav-footer {
+  /* border: var(--box-border-test-red); */
+  position: absolute;
+  width: 20rem;
+  bottom: 4rem;
+}
+
+.nav-footer > ul {
+  /* border: var(--box-border-test-red); */
+  font-size: 0.8rem;
+  letter-spacing: 0.1rem;
+  font-family: Arial;
+  list-style-type: none;
+  padding: 0rem;
+}
+
+li {
+  margin-bottom: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+li:hover {
+  opacity: 0.8;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.nav-footer li {
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0rem;
+  word-spacing: 0.1rem;
+}
+
+/* Sidebar Section !!! */
+
+/* !!! Message Section */
+
+.message-section {
+  width: 75%;
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+  /* background-color: red; */
+  margin-top: 9.5rem;
+}
+
+.content-body {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  padding: 4rem 2rem 1rem 2rem;
+}
+
+.content-text {
+  position: relative;
+  bottom: 2rem;
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.message-toggle {
+  position: relative;
+  top: 2rem;
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  width: fit-content;
+  padding: 0.3rem 3rem;
+}
+
+.message-toggle p {
+  margin: 0rem;
+}
+
+.profile-pic {
+  position: relative;
+  bottom: 0.75rem;
+}
+
+.keys {
+  display: flex;
+  justify-content: flex-end;
+  z-index: 2;
+}
+
+.keys > div {
+  position: relative;
+  bottom: 3.2rem;
+  padding: 0.3rem 3rem;
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Message Section !!! */
