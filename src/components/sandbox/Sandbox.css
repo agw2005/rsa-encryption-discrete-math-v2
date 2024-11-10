@@ -1,130 +1,42 @@
-.s-o-container {
-  width: 65%;
-  margin: 0rem auto;
+/* !!! Header Section */
+
+header {
+  padding: 0.5rem 1rem;
+  background-color: var(--primary-color);
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.5));
+
+  z-index: 3;
+}
+
+.left-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.left-header > img {
+  max-height: 2rem;
+}
+
+.right-header {
+  max-height: 4rem;
+  margin: 0rem;
+  margin-right: 2rem;
   position: relative;
-  top: 30rem;
+  top: 0.2rem;
 }
 
-.send-received {
-  height: 2.5rem;
-  max-width: 20rem;
-  min-width: 27rem;
-  padding: 0rem;
-  display: flex;
-}
-
-.send-received div {
-  border: var(--primary-border);
-  background-color: var(--secondary-color);
-  width: 50%;
-  z-index: 5;
-  text-align: center;
-}
-
-#send-option:hover,
-#receive-option:hover {
-  background-color: var(--secondary-complement-color);
-  cursor: pointer;
-}
-
-.outer-body {
-  border: var(--primary-border);
-  background-color: var(--secondary-color);
-  width: 100%;
-  height: 50rem;
-  display: flex;
-  align-items: center; /* Vertically center child (inner-body class) */
-  justify-content: center; /* Horizontally center child (inner-body class) */
-}
-
-.inner-body {
-  border: var(--primary-border);
-  background-color: var(--secondary-color);
-  /* background-color: red; */
-  height: 80%;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Vertically center child */
-  justify-content: center; /* Horizontally center child */
-  box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
-}
-
-/* ================================================================================== */
-input,
-textarea {
-  border: var(--primary-border);
-  background-color: var(--secondary-color);
-  color: var(--tertiary-color);
-  font-family: "Pixelify Sans", sans-serif;
-  font-size: 1.2rem;
-  letter-spacing: -0.05rem;
-  word-spacing: 0.5rem;
-  box-shadow: 0px 8px 15px 0px rgba(0, 0, 0, 0.5);
-}
-
-input:focus,
-textarea:focus {
-  outline: none; /* Removes the focus outline */
-}
-
-.form-section {
-  /* background-color: red; */
-  width: 100%;
-  height: 90%;
-}
-
-form {
-  margin: 0 auto;
-  /* background-color: lime; */
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  width: 90%;
-  height: 80%;
-}
-
-form textarea {
-  resize: none;
-  height: 100%;
-}
-
-.send-section {
-  display: flex;
-  /* background-color: purple; */
-  color: var(--tertiary-color);
-  font-family: "Pixelify Sans", sans-serif;
-  font-size: 1.2rem;
-  letter-spacing: -0.05rem;
-  word-spacing: 0.5rem;
-  align-items: center; /* Vertically center child */
-  justify-content: end; /* Horizontally center child */
-  margin: 1rem;
-}
-
-/* CUSTOM SCROLL BAR - from W3S */
-
-img:hover {
+header img:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
-}
+/* Header Section !!! */

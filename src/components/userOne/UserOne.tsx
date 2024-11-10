@@ -51,7 +51,7 @@ const UserOne = () => {
           onClick={handleClickEncrypted}
           className="right-header"
           src={`toggle-encrypted-${encryptedOn ? "on" : "off"}.png`}
-          alt="encrypt-on"
+          alt="encrypt-toggle"
         />
       </header>
 
@@ -124,6 +124,7 @@ const UserOne = () => {
           </div>
         </div>
       </section>
+
       <section className="s-o-container">
         <div className="send-received">
           <div id="send-option">Send</div>
