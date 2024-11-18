@@ -1,15 +1,16 @@
 import { SyntheticEvent, useState } from "react";
 import "./userOne.css";
+import generateKeys from "../../functions/generateKeys";
+import encryptString from "../../functions/encryptString";
+import decryptString from "../../functions/decryptString";
 
 const UserOne = () => {
+  const { publicKey, privateKey } = generateKeys();
   let contentMessage =
     "“YOU HAVE SO MUCH BUT ARE ALWAYS HUNGRY FOR MORE. STOP LOOKING UP AT EVERYTHING YOU DON'T HAVE AND LOOK AROUND AT EVERYTHING YOU DO.“";
+  let encryptedContentMessage = encryptString(contentMessage, publicKey);
   let contentSender = "Rupi Kaur";
   let name = "Kurt Cobain";
-  let pubkey =
-    "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvPqYT5z5tcVYzVCJw+Is";
-  let privkey =
-    "FP/KY+UNchKq4O0ufWoP4YZUVjq3/NyckJMeo8iV5wwPxtmXfbLWUVfdKKftFrjd";
   let [currentMessage, setCurrentMessage] = useState(contentMessage);
   let [navVisible, setNavVisible] = useState(false);
   let [encryptedOn, setEncryptedOn] = useState(true);
@@ -17,12 +18,14 @@ const UserOne = () => {
   let handleClickKeys = (event: SyntheticEvent) => {
     let clickedElement = event.currentTarget as HTMLElement;
     let clickedElementClass = clickedElement.className;
-    if (clickedElementClass.includes("message-toggle")) {
+    if (clickedElementClass.includes("message-toggle") && encryptedOn) {
+      setCurrentMessage(String(encryptedContentMessage));
+    } else if (clickedElementClass.includes("message-toggle") && !encryptedOn) {
       setCurrentMessage(contentMessage);
     } else if (clickedElementClass.includes("pub-key")) {
-      setCurrentMessage(pubkey);
+      setCurrentMessage(String(publicKey.publicExponent));
     } else if (clickedElementClass.includes("priv-key")) {
-      setCurrentMessage(privkey);
+      setCurrentMessage(String(privateKey.privateExponent));
     }
   };
 
