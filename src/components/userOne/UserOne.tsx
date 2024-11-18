@@ -1,7 +1,7 @@
 import { SyntheticEvent, useState } from "react";
 import generateKeys from "../../functions/generateKeys";
 import encryptString from "../../functions/encryptString";
-import "src/components/serOne/UserOne.css";
+import "./UserOne.css";
 
 const UserOne = () => {
   const { publicKey, privateKey } = generateKeys();
