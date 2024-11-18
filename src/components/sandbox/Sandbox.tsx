@@ -116,15 +116,18 @@ const Sandbox = () => {
               <div className="snooper-message">
                 <p className="message-title">bank account report</p>
                 <p className="message-content">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Praesent gravida ullamcorper gravida. Curabitur mi nulla,
-                  lacinia ut tincidunt eget, faucibus sit amet ligula.
-                  Vestibulum ante ipsum primis in faucibus orci luctus et
-                  ultrices posuere cubilia curae; Suspendisse eget magna sit
-                  amet lacus convallis pretium. Fusce placerat mauris at
-                  sagittis sodales. Pellentesque non felis sit amet ante
-                  fermentum posuere ornare eget est. Nunc rutrum aliquam mi,
-                  quis consectetur turpis pellentesque eu. M
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Quibusdam id ea labore! Aliquid, error porro? Eius doloribus
+                  possimus nam quas atque voluptatum necessitatibus corrupti id
+                  corporis. Ut quos est nisi.Lorem ipsum dolor sit, amet
+                  consectetur adipisicing elit. Quibusdam id ea labore! Aliquid,
+                  error porro? Eius doloribus possimus nam quas atque voluptatum
+                  necessitatibus corrupti id corporis. Ut quos est nisi.Lorem
+                  ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
+                  id ea labore! Aliquid, error porro? Eius doloribus possimus
+                  nam quas atque voluptatum necessitatibus corrupti id corporis.
+                  Ut quos est nisi.Lorem ipsum dolor sit, amet consectetur
+                  adipisicing elit.
                 </p>
               </div>
             </div>
