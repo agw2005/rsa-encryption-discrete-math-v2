@@ -37,38 +37,44 @@ const UserOne = () => {
   return (
     <>
       <header>
-        <div className="left-header">
+        <div className="userOne-left-header">
           <img
             onClick={handleClickNav}
-            className="left-header-nav"
+            className="userOne-left-header-nav"
             src="/nav.png"
             alt="nav-button"
           />
-          <img src="/picraft-logo.png" alt="logo" />
+          <a href="/">
+            <img src="/picraft-logo.png" alt="logo" />
+          </a>
         </div>
 
         <img
           onClick={handleClickEncrypted}
-          className="right-header"
+          className="userOne-right-header"
           src={`toggle-encrypted-${encryptedOn ? "on" : "off"}.png`}
           alt="encrypt-toggle"
         />
       </header>
 
-      <nav className={navVisible ? "nav-available" : "nav-hidden"}>
-        <div className="left-header-sidebar">
+      <nav
+        className={navVisible ? "userOne-nav-available" : "userOne-nav-hidden"}
+      >
+        <div className="userOne-left-header-sidebar">
           <img
             onClick={handleClickNav}
-            className="left-header-nav-sidebar"
+            className="userOne-left-header-nav-sidebar"
             src="/nav.png"
             alt="nav-button"
           />
-          <img src="/picraft-logo.png" alt="logo" />
+          <a href="/">
+            <img src="/picraft-logo.png" alt="logo" />
+          </a>
         </div>
         <img
           src="/profile-bar.png"
           alt="Analystic SMPT"
-          className="analystic"
+          className="userOne-analystic"
         />
         <hr />
         <p>Analytics</p>
@@ -80,7 +86,9 @@ const UserOne = () => {
           <li>Account Settings</li>
         </ul>
         <hr />
-        <p>User 1</p>
+        <a href="/user_one">
+          <p>User 1</p>
+        </a>
         <ul>
           <li>Send</li>
           <li>Inbox</li>
@@ -90,12 +98,14 @@ const UserOne = () => {
           <li>Send</li>
           <li>Inbox</li>
         </ul>
-        <p>Snooper</p>
+        <a href="/snooper">
+          <p>Snooper</p>
+        </a>
         <ul>
           <li>Monitor 1</li>
           <li>Recently Traffic</li>
         </ul>
-        <section className="nav-footer">
+        <section className="userOne-nav-footer">
           <hr />
           <ul>
             <li>About Me</li>
@@ -104,35 +114,39 @@ const UserOne = () => {
         </section>
       </nav>
 
-      <section className="message-section">
-        <div onClick={handleClickKeys} className="message-toggle">
+      <section className="userOne-message-section">
+        <div onClick={handleClickKeys} className="userOne-message-toggle">
           <p>{name}</p>
         </div>
-        <div className="content-body">
-          <img className="profile-pic" src="/kurner.png" alt="profile-pic" />
-          <div className="content-text">
+        <div className="userOne-content-body">
+          <img
+            className="userOne-profile-pic"
+            src="/kurner.png"
+            alt="profile-pic"
+          />
+          <div className="userOne-content-text">
             <p>{currentMessage}</p>
             {currentMessage == contentMessage ? <p>– {contentSender}</p> : null}
           </div>
         </div>
-        <div className="keys">
-          <div onClick={handleClickKeys} className="pub-key">
+        <div className="userOne-keys">
+          <div onClick={handleClickKeys} className="userOne-pub-key">
             <p>public-key</p>
           </div>
-          <div onClick={handleClickKeys} className="priv-key">
+          <div onClick={handleClickKeys} className="userOne-priv-key">
             <p>private-key</p>
           </div>
         </div>
       </section>
 
-      <section className="s-o-container">
-        <div className="send-received">
+      <section className="userOne-s-o-container">
+        <div className="userOne-send-received">
           <div id="send-option">Send</div>
           <div id="receive-option">Received</div>
         </div>
-        <div className="outer-body">
-          <div className="inner-body">
-            <div className="form-section">
+        <div className="userOne-outer-body">
+          <div className="userOne-inner-body">
+            <div className="userOne-form-section">
               <form>
                 <input
                   type="text"
@@ -153,7 +167,7 @@ const UserOne = () => {
                   placeholder="what message do you want to send?"
                 ></textarea>
               </form>
-              <div className="send-section">
+              <div className="userOne-send-section">
                 <p>message sent will be encrypted</p>
                 <img src="/send.png" alt="" />
               </div>

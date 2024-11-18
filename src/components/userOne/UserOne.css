@@ -20,22 +20,22 @@ header {
   z-index: 3;
 }
 
-.left-header {
+.userOne-left-header {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-.left-header > img {
+.userOne-left-header > img {
   max-height: 2rem;
 }
 
-.left-header-nav:hover {
+.userOne-left-header-nav:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.right-header {
+.userOne-right-header {
   max-height: 4rem;
   margin: 0rem;
   margin-right: 2rem;
@@ -43,7 +43,7 @@ header {
   top: 0.2rem;
 }
 
-.right-header:hover {
+.userOne-right-header:hover {
   opacity: 0.8;
   cursor: pointer;
 }
@@ -52,7 +52,7 @@ header {
 
 /* !!! Message Section */
 
-.message-section {
+.userOne-message-section {
   width: 75%;
   margin-left: 12.5%;
   margin-right: 12.5%;
@@ -60,7 +60,7 @@ header {
   margin-top: 9.5rem;
 }
 
-.content-body {
+.userOne-content-body {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -69,7 +69,7 @@ header {
   padding: 4rem 2rem 1rem 2rem;
 }
 
-.content-text {
+.userOne-content-text {
   position: relative;
   bottom: 2rem;
   overflow: hidden;
@@ -77,7 +77,7 @@ header {
   overflow-wrap: break-word;
 }
 
-.message-toggle {
+.userOne-message-toggle {
   position: relative;
   top: 2rem;
   border: var(--primary-border);
@@ -87,22 +87,24 @@ header {
   cursor: pointer;
 }
 
-.message-toggle:hover {
-  background-color: var(--secondary-complement-color);
+.userOne-message-toggle:hover {
+  background-color: var(--border-color);
+  color: var(--secondary-color);
+  cursor: pointer;
 }
 
-.profile-pic {
+.userOne-profile-pic {
   position: relative;
   bottom: 0.75rem;
 }
 
-.keys {
+.userOne-keys {
   display: flex;
   justify-content: flex-end;
   z-index: 2;
 }
 
-.keys > div {
+.userOne-keys > div {
   position: relative;
   bottom: 3.2rem;
   padding: 0.3rem 3rem;
@@ -112,11 +114,13 @@ header {
   cursor: pointer;
 }
 
-.pub-key:hover {
-  background-color: var(--secondary-complement-color);
+.userOne-pub-key:hover {
+  background-color: var(--border-color);
+  color: var(--secondary-color);
+  cursor: pointer;
 }
 
-.priv-key:hover {
+.userOne-priv-key:hover {
   background-color: var(--secondary-complement-color);
 }
 
@@ -137,39 +141,39 @@ nav {
   box-shadow: 15px 0px 15px 5px rgba(0, 0, 0, 0.5);
 }
 
-.nav-hidden {
+.userOne-nav-hidden {
   transform: translateX(-110%);
   transition: transform 0.5s ease-in-out;
 }
 
-.nav-available {
-  transform: translateX(0%);
+.userOne-nav-available {
+  transform: translateX(-5%);
   transition: transform 0.5s ease-in-out;
 }
 
-.left-header-sidebar {
+.userOne-left-header-sidebar {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-.left-header-sidebar > img {
+.userOne-left-header-sidebar > img {
   max-height: 2rem;
 }
 
-.left-header-nav-sidebar:hover {
+.userOne-left-header-nav-sidebar:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.analystic {
+.userOne-analystic {
   position: relative;
   right: 0rem;
   margin-top: 4rem;
   width: 20rem;
 }
 
-.analystic:hover {
+.userOne-analystic:hover {
   opacity: 0.8;
   cursor: pointer;
 }
@@ -188,14 +192,14 @@ nav > ul {
   margin: 0rem 0rem 1rem 1rem;
 }
 
-.nav-footer {
+.userOne-nav-footer {
   /* border: var(--box-border-test-red); */
   position: absolute;
   width: 20rem;
   bottom: 4rem;
 }
 
-.nav-footer > ul {
+.userOne-nav-footer > ul {
   /* border: var(--box-border-test-red); */
   font-size: 0.8rem;
   letter-spacing: 0.1rem;
@@ -215,24 +219,30 @@ li:hover {
   text-decoration: underline;
 }
 
-.nav-footer li {
+.userOne-nav-footer li {
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
   letter-spacing: 0rem;
   word-spacing: 0.1rem;
 }
 
+a {
+  text-decoration: none; /* Removes the underline */
+  color: inherit; /* Makes the text color inherit from the parent element */
+  outline: none; /* Removes the outline when focused (optional) */
+}
+
 /* Sidebar Section !!! */
 
 /* !!! S-O section */
-.s-o-container {
+.userOne-s-o-container {
   width: 75%;
   margin: 0rem auto;
   margin-top: 9.5rem;
   margin-bottom: 30%;
 }
 
-.send-received {
+.userOne-send-received {
   height: 2.5rem;
   max-width: 20rem;
   min-width: 27rem;
@@ -240,7 +250,7 @@ li:hover {
   display: flex;
 }
 
-.send-received div {
+.userOne-send-received div {
   border: var(--primary-border);
   background-color: var(--secondary-color);
   width: 50%;
@@ -250,11 +260,12 @@ li:hover {
 
 #send-option:hover,
 #receive-option:hover {
-  background-color: var(--secondary-complement-color);
+  background-color: var(--border-color);
+  color: var(--secondary-color);
   cursor: pointer;
 }
 
-.outer-body {
+.userOne-outer-body {
   border: var(--primary-border);
   background-color: var(--secondary-color);
   width: 100%;
@@ -264,7 +275,7 @@ li:hover {
   justify-content: center; /* Horizontally center child (inner-body class) */
 }
 
-.inner-body {
+.userOne-inner-body {
   border: var(--primary-border);
   background-color: var(--secondary-color);
   /* background-color: red; */
@@ -296,7 +307,7 @@ textarea:focus {
   outline: none; /* Removes the focus outline */
 }
 
-.form-section {
+.userOne-form-section {
   /* background-color: red; */
   width: 100%;
   height: 90%;
@@ -319,7 +330,7 @@ form textarea {
   height: 100%;
 }
 
-.send-section {
+.userOne-send-section {
   display: flex;
   color: var(--tertiary-color);
   font-family: "Pixelify Sans", sans-serif;

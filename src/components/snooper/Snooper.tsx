@@ -18,38 +18,44 @@ const Snooper = () => {
   return (
     <>
       <header>
-        <div className="left-header">
+        <div className="snooper-left-header">
           <img
             onClick={handleClickNav}
-            className="left-header-nav"
+            className="snooper-left-header-nav"
             src="/nav.png"
             alt="nav-button"
           />
-          <img src="/picraft-logo.png" alt="logo" />
+          <a href="/">
+            <img src="/picraft-logo.png" alt="logo" />
+          </a>
         </div>
 
         <img
           onClick={handleClickEncrypted}
-          className="right-header"
+          className="snooper-right-header"
           src={`toggle-encrypted-${encryptedOn ? "on" : "off"}.png`}
           alt="encrypt-toggle"
         />
       </header>
 
-      <nav className={navVisible ? "nav-available" : "nav-hidden"}>
-        <div className="left-header-sidebar">
+      <nav
+        className={navVisible ? "snooper-nav-available" : "snooper-nav-hidden"}
+      >
+        <div className="snooper-left-header-sidebar">
           <img
             onClick={handleClickNav}
-            className="left-header-nav-sidebar"
+            className="snooper-left-header-nav-sidebar"
             src="/nav.png"
             alt="nav-button"
           />
-          <img src="/picraft-logo.png" alt="logo" />
+          <a href="/">
+            <img src="/picraft-logo.png" alt="logo" />
+          </a>
         </div>
         <img
           src="/profile-bar.png"
           alt="Analystic SMPT"
-          className="analystic"
+          className="snooper-analystic"
         />
         <hr />
         <p>Analytics</p>
@@ -61,7 +67,9 @@ const Snooper = () => {
           <li>Account Settings</li>
         </ul>
         <hr />
-        <p>User 1</p>
+        <a href="/user_one">
+          <p>User 1</p>
+        </a>
         <ul>
           <li>Send</li>
           <li>Inbox</li>
@@ -71,12 +79,14 @@ const Snooper = () => {
           <li>Send</li>
           <li>Inbox</li>
         </ul>
-        <p>Snooper</p>
+        <a href="/snooper">
+          <p>Snooper</p>
+        </a>
         <ul>
           <li>Monitor 1</li>
           <li>Recently Traffic</li>
         </ul>
-        <section className="nav-footer">
+        <section className="snooper-nav-footer">
           <hr />
           <ul>
             <li>About Me</li>
@@ -85,37 +95,41 @@ const Snooper = () => {
         </section>
       </nav>
 
-      <section className="message-section">
-        <div className="message-toggle">
+      <section className="snooper-message-section">
+        <div className="snooper-message-toggle">
           <p>{name}</p>
         </div>
-        <div className="content-body">
-          <img className="profile-pic" src="/snooper.png" alt="profile-pic" />
-          <div className="content-text">
+        <div className="snooper-content-body">
+          <img
+            className="snooper-profile-pic"
+            src="/snooper.png"
+            alt="profile-pic"
+          />
+          <div className="snooper-content-text">
             <p>{contentMessage}</p>
             <p>– {contentSender}</p>
           </div>
         </div>
       </section>
 
-      <section className="s-o-container">
-        <div className="traffics">
+      <section className="snooper-s-o-container">
+        <div className="snooper-traffics">
           <div id="traffic-one">Traffic 1</div>
           <div id="traffic-two">Traffic 2</div>
         </div>
-        <div className="outer-body">
-          <div className="inner-body">
-            <div className="content-container">
-              <div className="snooper-infos">
+        <div className="snooper-outer-body">
+          <div className="snooper-inner-body">
+            <div className="snooper-content-container">
+              <div className="snooper-snooper-infos">
                 <img src="RunWTheWolf.png" alt="snooper-picture" />
-                <div className="snooper-name-info">
+                <div className="snooper-snooper-name-info">
                   <img src="RunWTheWolf-profile.png" alt="snooper-profile" />
                   <p>RunWTheWolves</p>
                 </div>
               </div>
-              <div className="snooper-message">
-                <p className="message-title">bank account report</p>
-                <p className="message-content">
+              <div className="snooper-snooper-message">
+                <p className="snooper-message-title">bank account report</p>
+                <p className="snooper-message-content">
                   Lorem ipsum dolor sit, amet consectetur adipisicing elit.
                   Quibusdam id ea labore! Aliquid, error porro? Eius doloribus
                   possimus nam quas atque voluptatum necessitatibus corrupti id

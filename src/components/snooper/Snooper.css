@@ -20,17 +20,17 @@ header {
   z-index: 3;
 }
 
-.left-header {
+.snooper-left-header {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-.left-header > img {
+.snooper-left-header > img {
   max-height: 2rem;
 }
 
-.right-header {
+.snooper-right-header {
   max-height: 4rem;
   margin: 0rem;
   margin-right: 2rem;
@@ -60,39 +60,39 @@ nav {
   box-shadow: 15px 0px 15px 5px rgba(0, 0, 0, 0.5);
 }
 
-.nav-hidden {
+.snooper-nav-hidden {
   transform: translateX(-110%);
   transition: transform 0.5s ease-in-out;
 }
 
-.nav-available {
+.snooper-nav-available {
   transform: translateX(-5%);
   transition: transform 0.5s ease-in-out;
 }
 
-.left-header-sidebar {
+.snooper-left-header-sidebar {
   display: flex;
   align-items: center;
   gap: 2rem;
 }
 
-.left-header-sidebar > img {
+.snooper-left-header-sidebar > img {
   max-height: 2rem;
 }
 
-.left-header-nav-sidebar:hover {
+.snooper-left-header-nav-sidebar:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
-.analystic {
+.snooper-analystic {
   position: relative;
   right: 0rem;
   margin-top: 4rem;
   width: 20rem;
 }
 
-.analystic:hover {
+.snooper-analystic:hover {
   opacity: 0.8;
   cursor: pointer;
 }
@@ -111,14 +111,14 @@ nav > ul {
   margin: 0rem 0rem 1rem 1rem;
 }
 
-.nav-footer {
+.snooper-nav-footer {
   /* border: var(--box-border-test-red); */
   position: absolute;
   width: 20rem;
   bottom: 4rem;
 }
 
-.nav-footer > ul {
+.snooper-nav-footer > ul {
   /* border: var(--box-border-test-red); */
   font-size: 0.8rem;
   letter-spacing: 0.1rem;
@@ -138,7 +138,7 @@ li:hover {
   text-decoration: underline;
 }
 
-.nav-footer li {
+.snooper-nav-footer li {
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
   letter-spacing: 0rem;
@@ -149,7 +149,7 @@ li:hover {
 
 /* !!! Message Section */
 
-.message-section {
+.snooper-message-section {
   width: 75%;
   margin-left: 12.5%;
   margin-right: 12.5%;
@@ -157,7 +157,7 @@ li:hover {
   margin-top: 9.5rem;
 }
 
-.content-body {
+.snooper-content-body {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -166,7 +166,7 @@ li:hover {
   padding: 4rem 2rem 1rem 2rem;
 }
 
-.content-text {
+.snooper-content-text {
   position: relative;
   bottom: 2rem;
   overflow: hidden;
@@ -174,7 +174,7 @@ li:hover {
   overflow-wrap: break-word;
 }
 
-.message-toggle {
+.snooper-message-toggle {
   position: relative;
   top: 2rem;
   border: var(--primary-border);
@@ -183,18 +183,18 @@ li:hover {
   padding: 0.3rem 3rem;
 }
 
-.profile-pic {
+.snooper-profile-pic {
   position: relative;
   bottom: 0.75rem;
 }
 
-.keys {
+.snooper-keys {
   display: flex;
   justify-content: flex-end;
   z-index: 2;
 }
 
-.keys > div {
+.snooper-keys > div {
   position: relative;
   bottom: 3.2rem;
   padding: 0.3rem 3rem;
@@ -207,14 +207,14 @@ li:hover {
 /* Message Section !!! */
 
 /* !!! S-O section */
-.s-o-container {
+.snooper-s-o-container {
   width: 75%;
   margin: 0rem auto;
   margin-top: 9.5rem;
   margin-bottom: 30%;
 }
 
-.traffics {
+.snooper-traffics {
   height: 2.5rem;
   max-width: 20rem;
   min-width: 27rem;
@@ -222,7 +222,7 @@ li:hover {
   display: flex;
 }
 
-.traffics div {
+.snooper-traffics div {
   border: var(--primary-border);
   background-color: var(--secondary-color);
   width: 50%;
@@ -237,26 +237,26 @@ li:hover {
   cursor: pointer;
 }
 
-.outer-body {
+.snooper-outer-body {
   border: var(--primary-border);
   background-color: var(--secondary-color);
   width: 100%;
   height: 30rem;
   display: flex;
-  align-items: center; /* Vertically center child (inner-body class) */
-  justify-content: center; /* Horizontally center child (inner-body class) */
+  align-items: center;
+  justify-content: center;
 }
 
-.inner-body {
+.snooper-inner-body {
   border: var(--primary-border);
   height: 75%;
   width: 90%;
   display: flex;
-  align-items: center; /* Vertically center child (inner-body class) */
-  justify-content: center; /* Horizontally center child (inner-body class) */
+  align-items: center;
+  justify-content: center;
 }
 
-.content-container {
+.snooper-content-container {
   height: 90%;
   width: 95%;
   display: flex;
@@ -264,61 +264,61 @@ li:hover {
   gap: 1rem;
 }
 
-.snooper-infos,
-.snooper-message {
+.snooper-snooper-infos,
+.snooper-snooper-message {
   border: var(--primary-border);
   background-color: var(--secondary-color);
   height: calc(100% - 0.3rem);
 }
 
-.snooper-infos > img {
+.snooper-snooper-infos > img {
   width: 80%;
 }
 
-.snooper-infos {
+.snooper-snooper-infos {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Vertically center child (inner-body class) */
-  justify-content: center; /* Horizontally center child (inner-body class) */
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
-.snooper-message {
+.snooper-snooper-message {
   flex: 3;
 }
 
-.snooper-name-info {
+.snooper-snooper-name-info {
   display: flex;
   gap: 1rem;
-  align-items: center; /* Vertically center child (inner-body class) */
+  align-items: center;
   font-size: 1.2rem;
 }
 
-.snooper-name-info > p {
+.snooper-snooper-name-info > p {
   margin-right: 1rem;
 }
-.snooper-name-info > img {
+.snooper-snooper-name-info > img {
   margin-left: 1rem;
 }
 
-.snooper-message {
+.snooper-snooper-message {
   font-size: 1.2rem;
   text-align: justify;
   display: flex;
-  justify-content: center; /* Horizontally center child (inner-body class) */
+  justify-content: center;
   flex-direction: column;
 }
 
-.snooper-message > p {
+.snooper-snooper-message > p {
   margin-top: 1.5rem;
   margin-left: 1.5rem;
   margin-right: 1.5rem;
 }
 
-.message-content {
+.snooper-message-content {
   margin-bottom: 1.5rem;
-  overflow-y: auto; /* Enables vertical scrolling */
-  overflow-x: hidden; /* Prevents horizontal scrolling */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* CUSTOM SCROLL BAR - from W3S */
