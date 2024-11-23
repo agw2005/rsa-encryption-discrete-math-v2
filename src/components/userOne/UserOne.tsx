@@ -1,7 +1,7 @@
 import { SyntheticEvent, useState } from "react";
-
+import generateKeys from "../../functions/generateKeys";
+import encryptString from "../../functions/encryptString";
 import "./UserOne.css";
-import { generateKeys } from "../services/generateKeys";
 
 const UserOne = () => {
   const { publicKey, privateKey } = generateKeys();
@@ -22,9 +22,9 @@ const UserOne = () => {
     } else if (clickedElementClass.includes("message-toggle") && !encryptedOn) {
       setCurrentMessage(contentMessage);
     } else if (clickedElementClass.includes("pub-key")) {
-      setCurrentMessage(String(publicKey));
+      setCurrentMessage(String(publicKey.publicExponent));
     } else if (clickedElementClass.includes("priv-key")) {
-      setCurrentMessage(String(privateKey));
+      setCurrentMessage(String(privateKey.privateExponent));
     }
   };
 
@@ -182,7 +182,3 @@ const UserOne = () => {
 };
 
 export default UserOne;
-function encryptString(_contentMessage: string, _publicKey: { e: number; n: number; }) {
-  throw new Error("Function not implemented.");
-}
-
