@@ -23,6 +23,7 @@ body {
   background-image: url("/pixel-bg.png");
   background-repeat: no-repeat;
   background-position: center top;
+  background-attachment: fixed;  /* This makes the background stay fixed */
   background-color: var(--primary-color);
   font-family: "Pixelify Sans", sans-serif;
   color: var(--tertiary-color);
