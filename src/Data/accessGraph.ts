@@ -3,7 +3,7 @@ export interface accessgraph {
   }
   
   export const accessGraph: accessgraph = {
-    "Chief Operating Officer": ["Product Manager", "Senior Developer"],
+    "Chief Operating Officer": ["Product Manager"],
     "Product Manager": ["Chief Operating Officer", "Product Manager", "Senior Developer", "Junior Developer"],
     "Senior Developer": ["Product Manager", "Senior Developer", "Junior Developer"],
     "Junior Developer": ["Senior Developer", "Junior Developer"]

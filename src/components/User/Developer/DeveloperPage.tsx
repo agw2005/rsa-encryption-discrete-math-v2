@@ -48,9 +48,7 @@ const DeveloperPage: React.FC = () => {
 
 
 
-  // Perbaikan di fungsi canAccess
   const canAccess = (currentRole: string, targetRole: string, graph: AccessGraph): boolean => {
-    // Cek apakah targetRole ada dalam daftar akses untuk currentRole
     const accessibleRoles = graph[currentRole] || [];
     return accessibleRoles.includes(targetRole);
   };
