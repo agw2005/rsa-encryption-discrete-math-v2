@@ -60,33 +60,46 @@ header {
 
 /* !!! S-O section */
 .snooper-s-o-container {
-  width: 75%;
-  margin: 0rem auto;
+  width: 90%;
+  margin: 0 auto;
   margin-top: 9.5rem;
-  margin-bottom: 30%;
+  margin-bottom: 10%;
 }
 
 .snooper-traffics {
   height: 2.5rem;
   max-width: 60rem;
   min-width: 27rem;
-  padding: 0rem;
   display: flex;
+  justify-content: space-between; 
+  border-bottom: var(--primary-border); 
 }
 
 .snooper-traffics div {
   border: var(--primary-border);
   background-color: var(--secondary-color);
-  width: 50%;
-  z-index: 1;
+  color: var(--text-color);
+  width: 20%; 
+  height: 100%; 
   text-align: center;
+  padding: 0; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box; 
 }
 
-#traffic-one:hover,
-#traffic-two:hover {
+.snooper-traffics div:hover {
+  background-color: var(--border-color);
+  color: var(--hover-text-color);
+  cursor: pointer;
+}
+
+.snooper-traffics div.active {
   background-color: var(--border-color);
   color: var(--secondary-color);
-  cursor: pointer;
+  font-weight: bold;
 }
 
 .snooper-outer-body {
@@ -97,80 +110,19 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 1rem;
 }
 
 .snooper-inner-body {
   border: var(--primary-border);
+  background-color: var(--secondary-color);
   height: 75%;
   width: 90%;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.snooper-content-container {
-  height: 90%;
-  width: 95%;
-  display: flex;
-  flex-direction: row;
-  gap: 1rem;
-}
-
-.snooper-snooper-infos,
-.snooper-snooper-message {
-  border: var(--primary-border);
-  background-color: var(--secondary-color);
-  height: calc(100% - 0.3rem);
-}
-
-.snooper-snooper-infos > img {
-  width: 80%;
-}
-
-.snooper-snooper-infos {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-}
-.snooper-snooper-message {
-  flex: 3;
-}
-
-.snooper-snooper-name-info {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
-  font-size: 1.2rem;
-}
-
-.snooper-snooper-name-info > p {
-  margin-right: 1rem;
-}
-.snooper-snooper-name-info > img {
-  margin-left: 1rem;
-}
-
-.snooper-snooper-message {
-  font-size: 1.2rem;
-  text-align: justify;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.snooper-snooper-message > p {
-  margin-top: 1.5rem;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-}
-
-.snooper-message-content {
-  margin-bottom: 1.5rem;
-  overflow-y: auto;
-  overflow-x: hidden;
+  text-align: center;
+  color: var(--text-color);
 }
 @keyframes fadeIn {
   from {

@@ -24,6 +24,7 @@ const DeveloperPage: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
   const [password, setPassword] = useState('');
+  const [activeSection, setActiveSection] = useState('send'); // Default to 'send'
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -45,9 +46,7 @@ const DeveloperPage: React.FC = () => {
     navigate('/login');
   };
 
-  const handleLogin = () => {
-    // Your login logic here
-  };
+
 
   // Perbaikan di fungsi canAccess
   const canAccess = (currentRole: string, targetRole: string, graph: AccessGraph): boolean => {
@@ -85,12 +84,26 @@ const DeveloperPage: React.FC = () => {
       </section>
 
       <section className="userOne-s-o-container">
-        <div className="userOne-send-received">
-          <div id="send-option">Send</div>
-          <div id="receive-option">Received</div>
+      <div className="userOne-send-received">
+        <div
+          id="send-option"
+          className={activeSection === 'send' ? 'active' : ''}
+          onClick={() => setActiveSection('send')}
+        >
+          Send
         </div>
-        <div className="userOne-outer-body">
-          <div className="userOne-inner-body">
+        <div
+          id="receive-option"
+          className={activeSection === 'inbox' ? 'active' : ''}
+          onClick={() => setActiveSection('inbox')}
+        >
+          Inbox
+        </div>
+      </div>
+
+      <div className="userOne-outer-body">
+        {activeSection === 'send' && (
+          <div id="send" className="userOne-inner-body">
             <div className="userOne-form-section">
               <form>
                 <div className="dropdown-container">
@@ -153,8 +166,15 @@ const DeveloperPage: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        )}
+
+        {activeSection === 'inbox' && (
+          <div id="inbox" className="userOne-inner-body">
+            <p>Inbox content goes here...</p>
+          </div>
+        )}
+      </div>
+    </section>
     </div>
   );
 };
