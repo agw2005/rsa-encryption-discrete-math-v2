@@ -34,6 +34,7 @@ const LoginPage: React.FC = () => {
       // Navigate to the respective page based on the user's role
       switch (selectedUser.role) {
         case 'Chief Operating Officer':
+
           navigate('/product_manager');
           break;
         case 'Senior Developer':
