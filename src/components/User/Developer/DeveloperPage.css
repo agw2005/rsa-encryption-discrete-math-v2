@@ -367,7 +367,155 @@ img:hover {
 
 /* S-O section !!! */
 
+/* INBOX */
+.inbox-container {
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
 
+.inbox-header {
+  padding: 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.inbox-header h3 {
+  margin: 0;
+  font-size: 24px;
+  color: #333333;
+}
+
+.inbox-content {
+  display: flex;
+  height: calc(100% - 70px);
+}
+
+.inbox-message-list {
+  width: 40%;
+  border-right: 1px solid var(--secondary-color);
+  overflow-y: auto;
+  background-color: var(--secondary-color);
+
+}
+
+.inbox-message-preview {
+  padding: 15px;
+  border-bottom: 1px solid #eaeaea;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.inbox-message-preview:hover {
+  background-color: #f5f5f5;
+}
+
+.inbox-message-preview.selected {
+  background-color: var(--secondary-color);
+}
+
+.message-info {
+  width: 100%;
+}
+
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.message-from {
+  font-weight: 600;
+  color: #333333;
+  margin: 0;
+}
+
+.message-time {
+  font-size: 12px;
+  color: #666666;
+}
+
+.message-subject {
+  margin: 0;
+  color: #666666;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.message-detail {
+  flex: 1;
+  padding: 20px;
+  background-color: var(--secondary-color);
+}
+
+.message-detail-header {
+  margin-bottom: 20px;
+}
+
+.message-detail-header h4 {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: #333333;
+}
+
+.message-detail-content {
+  line-height: 1.6;
+  color: #444444;
+}
+
+.empty-inbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 40px;
+  text-align: center;
+  color: #666666;
+}
+
+.empty-inbox-icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+/* Animation for message transitions */
+.inbox-message-preview {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scrollbar styling */
+.inbox-message-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.inbox-message-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.inbox-message-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.inbox-message-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
