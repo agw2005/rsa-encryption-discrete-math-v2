@@ -4,8 +4,18 @@ import { useNavigate } from 'react-router-dom';
 import './DeveloperPage.css';
 import usersData from '../../../data/users.json';
 import { accessGraph, accessgraph } from '../../../Data/accessGraph';
-import { Mail } from 'lucide-react';
+import { generateKeys, encrypt, decrypt } from "../../../functions/rsaUtilis";
 
+
+interface RSAKey {
+  e: string;
+  n: string;
+}
+
+interface PrivateRSAKey {
+  d: string;
+  n: string;
+}
 
 interface User {
   id: number;
@@ -13,6 +23,10 @@ interface User {
   role: string;
   profilePic: string;
   password: string;
+  rsaKeys: {
+    publicKey: RSAKey;
+    privateKey: PrivateRSAKey;
+  };
 }
 
 interface Message {
@@ -22,6 +36,14 @@ interface Message {
   subject: string;
   content: string;
   date: string; // Add the 'date' property to store when the message was sent
+}
+
+interface LOG {
+  id: number; 
+  from: number; 
+  to: number; 
+  content: string; // Only hold 15 characters then "..."
+  date: string; 
 }
 
 const DeveloperPage: React.FC = () => {
@@ -42,6 +64,7 @@ const DeveloperPage: React.FC = () => {
   };
   const navigate = useNavigate();
 
+  const [log, setLog] = useState<LOG[]>([]); // Initialize LOG state
 
   
   useEffect(() => {
@@ -52,6 +75,19 @@ const DeveloperPage: React.FC = () => {
       setUsers(usersData);
     } else {
       navigate("/login");
+    }
+
+    //log
+    const storedLogs = JSON.parse(localStorage.getItem("logs") || "[]");
+    setLog(storedLogs);
+    
+    //encrypt
+
+    const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
+    console.log("Loaded users:", storedUsers); // Check what's being loaded  
+    setUsers(storedUsers);
+    if (usersData) {
+      setUsers(usersData);
     }
 
     // Load messages from localStorage
@@ -67,30 +103,63 @@ const DeveloperPage: React.FC = () => {
   };
 
   const handleSendMessage = () => {
-    if (!selectedUser || !subject || !content) {
-      alert("Please fill in all fields and select a user!");
-      return;
-    }
+    const usersData = JSON.parse(localStorage.getItem("users") || "[]");
 
-    const newMessage: Message = {
-      id: messages.length + 1, // Generate a new unique ID
-      from: currentUser?.id || 0,
-      to: selectedUser.id,
-      subject,
-      content,
-      date: new Date().toISOString(), // Set the current date/time in ISO format
+    // Find the current user by their ID (you may adjust this logic depending on how currentUser is stored)
+    const currentUserData = usersData.find((user: User) => user.id === currentUser?.id);
+    if (currentUserData?.rsaKeys?.publicKey) {
+      // Check if selectedUser is not null or undefined
+      if (selectedUser) {
+        const encryptedContent = encrypt(content, currentUserData.rsaKeys.publicKey);
+
+        // Now you can send the encrypted content
+        const newMessage = {
+          id: messages.length + 1, // Generate a new unique ID
+          from: currentUser?.id || 0,
+          to: selectedUser.id,
+  
+          subject: subject,
+          content: encryptedContent,
+          date: new Date().toISOString(),
+        };
+  
+        const updatedMessages = [...messages, newMessage];
+        setMessages(updatedMessages);
+  
+        // Save updated messages to localStorage
+        localStorage.setItem("messages", JSON.stringify(updatedMessages));
+
+
+        //save to log
+        handleLogMessage(currentUser?.id || 0, selectedUser.id, encryptedContent, new Date().toISOString());
+
+        // Reset form fields
+        setSubject("");
+        setContent("");
+        alert("Message sent!");
+      } else {
+        alert("No user selected.");
+      }
+    } else {
+      alert("RSA keys not found.");
+    }
+  };
+
+  const handleLogMessage = (from: number, to: number, content: string, date: string) => {
+    const truncatedContent = content.length > 15 ? `${content.slice(0, 15)}...` : content;
+    const newLog = {
+      id: log.length + 1,
+      from,
+      to,
+      content: truncatedContent,
+      date,
     };
 
-    // Add the new message to the state
-    const updatedMessages = [...messages, newMessage];
-    setMessages(updatedMessages);
+    const updatedLogs = [...log, newLog];
+    setLog(updatedLogs);
 
-    // Save updated messages to localStorage
-    localStorage.setItem('messages', JSON.stringify(updatedMessages));
-
-    setSubject("");
-    setContent("");
-    alert("Message sent!");
+    // Save the updated logs to localStorage
+    localStorage.setItem("logs", JSON.stringify(updatedLogs));
   };
 
   const handleLogout = () => {
@@ -101,9 +170,21 @@ const DeveloperPage: React.FC = () => {
   const inboxMessages = messages.filter((msg) => msg.to === currentUser?.id);
 
 
-const handleMessageClick = (msg: Message) => {
-  setSelectedMessage(msg);
-};
+  const handleMessageClick = (msg: Message) => {
+    const usersData = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const currentUserData = usersData.find((user: User) => user.id === currentUser?.id);
+
+    if (currentUserData?.rsaKeys?.publicKey) {
+      const decryptedContent = decrypt(msg.content, currentUserData.rsaKeys.privateKey);
+      setSelectedMessage({
+        ...msg,
+        content: decryptedContent, // Decrypted content
+      });
+    } else {
+      alert("RSA keys not found.");
+    }
+  };
 
 const getSenderName = (userId: number): string => {
   const sender = users.find(user => user.id === userId);

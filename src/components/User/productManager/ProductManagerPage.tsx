@@ -4,6 +4,17 @@ import { useNavigate } from 'react-router-dom';
 import './ProductManagerPage.css';
 import usersData from '../../../data/users.json';
 import { accessGraph, accessgraph } from '../../../Data/accessGraph'; // Pastikan path impor benar
+import { generateKeys, encrypt, decrypt } from "../../../functions/rsaUtilis";
+
+interface RSAKey {
+  e: string;
+  n: string;
+}
+
+interface PrivateRSAKey {
+  d: string;
+  n: string;
+}
 
 interface User {
   id: number;
@@ -11,7 +22,12 @@ interface User {
   role: string;
   profilePic: string;
   password: string;
+  rsaKeys: {
+    publicKey: RSAKey;
+    privateKey: PrivateRSAKey;
+  };
 }
+
 
 interface Message {
   id: number; // Add the 'id' property to uniquely identify each message
@@ -21,6 +37,15 @@ interface Message {
   content: string;
   date: string; // Add the 'date' property to store when the message was sent
 }
+
+interface LOG {
+  id: number; 
+  from: number; 
+  to: number; 
+  content: string; // Only hold 15 characters then "..."
+  date: string; 
+}
+
 
 const ProductManagerPage: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -35,6 +60,8 @@ const ProductManagerPage: React.FC = () => {
   const [content, setContent] = useState("");
   const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
 
+  const [log, setLog] = useState<LOG[]>([]); // Initialize LOG state
+
   // Function to get the name of the sender
   const getSenderName = (userId: number): string => {
     const sender = users.find(user => user.id === userId);
@@ -42,50 +69,107 @@ const ProductManagerPage: React.FC = () => {
   };
 
   // Handle message click to display the selected message
-  const handleMessageClick = (msg: Message) => {
-    setSelectedMessage(msg);
-  };
-
-  // Handle sending a message
-  const handleSendMessage = () => {
-    if (!selectedUser || !subject || !content) {
-      alert("Please fill in all fields and select a user!");
-      return;
-    }
-
-    const newMessage: Message = {
-      id: messages.length + 1, // Generate a new unique ID
-      from: currentUser?.id || 0,
-      to: selectedUser.id,
-      subject,
-      content,
-      date: new Date().toISOString(),
+  //log
+  const handleLogMessage = (from: number, to: number, content: string, date: string) => {
+    const truncatedContent = content.length > 15 ? `${content.slice(0, 15)}...` : content;
+    const newLog = {
+      id: log.length + 1,
+      from,
+      to,
+      content: truncatedContent,
+      date,
     };
 
-    // Add the new message to the state
-    const updatedMessages = [...messages, newMessage];
-    setMessages(updatedMessages);
+    const updatedLogs = [...log, newLog];
+    setLog(updatedLogs);
 
-    // Save updated messages to localStorage
-    localStorage.setItem('messages', JSON.stringify(updatedMessages));
+    // Save the updated logs to localStorage
+    localStorage.setItem("logs", JSON.stringify(updatedLogs));
+  };
 
-    setSubject("");
-    setContent("");
-    alert("Message sent!");
+
+
+  const handleSendMessage = () => {
+    const usersData = JSON.parse(localStorage.getItem("users") || "[]");
+
+    // Find the current user by their ID (you may adjust this logic depending on how currentUser is stored)
+    const currentUserData = usersData.find((user: User) => user.id === currentUser?.id);
+    if (currentUserData?.rsaKeys?.publicKey) {
+      // Check if selectedUser is not null or undefined
+      if (selectedUser) {
+        const encryptedContent = encrypt(content, currentUserData.rsaKeys.publicKey);
+
+        // Now you can send the encrypted content
+        const newMessage = {
+          id: messages.length + 1, // Generate a new unique ID
+          from: currentUser?.id || 0,
+          to: selectedUser.id,
+  
+          subject: subject,
+          content: encryptedContent,
+          date: new Date().toISOString(),
+        };
+  
+        const updatedMessages = [...messages, newMessage];
+        setMessages(updatedMessages);
+  
+        // Save updated messages to localStorage
+        localStorage.setItem("messages", JSON.stringify(updatedMessages));
+  
+
+
+        handleLogMessage(currentUser?.id || 0, selectedUser.id, encryptedContent, new Date().toISOString());
+
+
+        // Reset form fields
+        setSubject("");
+        setContent("");
+        alert("Message sent!");
+      } else {
+        alert("No user selected.");
+      }
+    } else {
+      alert("RSA keys not found.");
+    }
+  };
+  
+
+
+  const handleMessageClick = (msg: Message) => {
+    const usersData = JSON.parse(localStorage.getItem("users") || "[]");
+
+    const currentUserData = usersData.find((user: User) => user.id === currentUser?.id);
+
+    if (currentUserData?.rsaKeys?.publicKey) {
+      const decryptedContent = decrypt(msg.content, currentUserData.rsaKeys.privateKey);
+      setSelectedMessage({
+        ...msg,
+        content: decryptedContent, // Decrypted content
+      });
+    } else {
+      alert("RSA keys not found.");
+    }
   };
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
-      const user = usersData.find((user) => user.id === parseInt(userId));
+      const user = usersData.find((user) => user.id === parseInt(userId, 10));
       setCurrentUser(user || null);
-      setUsers(usersData);
     } else {
       navigate("/login");
     }
+  
+    const storedLogs = JSON.parse(localStorage.getItem("logs") || "[]");
+    setLog(storedLogs);
 
-    // Load messages from localStorage
-    const storedMessages = localStorage.getItem('messages');
+    const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
+    console.log("Loaded users:", storedUsers); // Check what's being loaded  
+    setUsers(storedUsers);
+    if (usersData) {
+      setUsers(usersData);
+    }
+    const storedMessages = localStorage.getItem("messages");
     if (storedMessages) {
       setMessages(JSON.parse(storedMessages));
     }
@@ -109,6 +193,51 @@ const ProductManagerPage: React.FC = () => {
     return accessibleRoles.includes(targetRole);
   };
 
+
+  const handleGenerateKeys = () => {
+    try {
+      const updatedUsers = users.map((user) => {
+        const keys = generateKeys();
+        console.log("Generated RSA Keys");
+  
+        return {
+          ...user,
+          rsaKeys: {
+            publicKey: keys.publicKey,
+            privateKey: keys.privateKey,
+          },
+        };
+      });
+  
+      console.log("Updating users:", updatedUsers);
+      setUsers(updatedUsers);
+  
+      console.log("Saving to localStorage...");
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+  
+      alert("RSA keys generated and saved for all users.");
+    } catch (error) {
+      console.error("Error generating RSA keys:", error);
+    }
+  };
+  
+  const [keys, setKeys] = useState<{ publicKey: any; privateKey: any } | null>(null);
+    const [message, setMessage] = useState("");
+    const [encrypted, setEncrypted] = useState("");
+    const [decrypted, setDecrypted] = useState("");
+
+
+    const handleEncrypt = () => {
+        if (keys) {
+            setEncrypted(encrypt(message, keys.publicKey));
+        }
+    };
+
+    const handleDecrypt = () => {
+        if (keys) {
+            setDecrypted(decrypt(encrypted, keys.privateKey));
+        }
+    };
   if (!currentUser) {
     return <div>Loading...</div>; // Loading state if the user is not yet fetched
   }
@@ -180,8 +309,49 @@ const ProductManagerPage: React.FC = () => {
 
         <div className="snooper-outer-body">
           {activeSection === 'graph' && <div>Graph</div>}
-          {activeSection === 'traffic' && <div>Traffic Log Content</div>}
+          {activeSection === 'traffic' && 
+          <div className="generate-keys-section">
+          <h1>RSA Encryption</h1>
+          <button onClick={handleGenerateKeys} className="generate-btn">
+            Generate Keys
+          </button>
+           <div className="traffic-logs">
+    <h2>Traffic Logs</h2>
+    <div className="log-list">
+      {log.length > 0 ? (
+        log.slice(-8).map((entry) => (
+          <div key={entry.id} className="log-entry">
+            <ul>
+              <li>
+                <strong>From:</strong> {getSenderName(entry.from)} 
+                <strong> To:</strong> {getSenderName(entry.to)}
+                <br />
+                <strong>Content:</strong> {entry.content} 
+                <br />
+                <small><strong>Date:</strong> {new Date(entry.date).toLocaleString()}</small>
+              </li>
+            </ul>
+          </div>
+        ))
+      ) : (
+        <p>No logs available.</p>
+      )}
+    </div>
+  </div>
+        </div>}
           {activeSection === 'manage' && <div>Manage Content</div>}
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
           {activeSection === 'send' && (
            <div id="send" className="userOne-inner-body">
            <div className="userOne-form-section">
@@ -289,18 +459,18 @@ const ProductManagerPage: React.FC = () => {
           </div>
 
           {selectedMessage && (
-            <div className="message-detail">
-              <div className="message-detail-header">
-                <h4>{selectedMessage.subject}</h4>
-                <p className="message-from">
-                  From: {getSenderName(selectedMessage.from)}
-                </p>
-              </div>
-              <div className="message-detail-content">
-                <p className="message-content">{selectedMessage.content}</p>
-              </div>
-            </div>
-          )}
+  <div className="message-detail">
+    <div className="message-detail-header">
+      <h4>{selectedMessage.subject}</h4>
+      <p className="message-from">
+        From: {getSenderName(selectedMessage.from)}
+      </p>
+    </div>
+    <div className="message-detail-content">
+      <p className="message-content">{selectedMessage.content}</p> {/* This will be decrypted */}
+    </div>
+  </div>
+)}
         </div>
       ) : (
         <div className="empty-inbox">

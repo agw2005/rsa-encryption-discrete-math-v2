@@ -1,74 +1,172 @@
 [
-    {
+  {
       "id": 1,
       "name": "John Doe",
       "role": "Chief Operating Officer",
       "profilePic": "/snooper.png",
-      "password": "password"
-      
-    },
-    {
+      "password": "password",
+      "rsaKeys": {
+          "publicKey": {
+              "e": "",
+              "n": ""
+          },
+          "privateKey": {
+              "d": "",
+              "n": ""
+          }
+      }
+  },
+  {
       "id": 2,
       "name": "Jane Smith",
       "role": "Product Manager",
       "profilePic": "/snooper.png",
-      "password": "password"
-    },
-    {
+      "password": "password",
+      "rsaKeys": {
+          "publicKey": {
+              "e": "",
+              "n": ""
+          },
+          "privateKey": {
+              "d": "",
+              "n": ""
+          }
+      }
+  },
+  {
       "id": 3,
       "name": "Alice Johnson",
       "role": "Product Manager",
       "profilePic": "/snooper.png",
-      "password": "password"
-    },
-    {
+      "password": "password",
+      "rsaKeys": {
+          "publicKey": {
+              "e": "",
+              "n": ""
+          },
+          "privateKey": {
+              "d": "",
+              "n": ""
+          }
+      }
+  },
+  {
       "id": 4,
       "name": "Bob Brown",
       "role": "Product Manager",
       "profilePic": "/snooper.png",
-      "password": "password"
-    },
-    {
+      "password": "password",
+      "rsaKeys": {
+          "publicKey": {
+              "e": "",
+              "n": ""
+          },
+          "privateKey": {
+              "d": "",
+              "n": ""
+          }
+      }
+  },
+  {
       "id": 5,
       "name": "Charlie Davis",
       "role": "Senior Developer",
       "profilePic": "/snooper.png",
-      "password": "password"
-    },
-    {
+      "password": "password",
+      "rsaKeys": {
+          "publicKey": {
+              "e": "",
+              "n": ""
+          },
+          "privateKey": {
+              "d": "",
+              "n": ""
+          }
+      }
+  },
+  {
       "id": 6,
       "name": "David Evans",
       "role": "Senior Developer",
       "profilePic": "/snooper.png",
-      "password": "password"
-    },
-    {
+      "password": "password",
+      "rsaKeys": {
+          "publicKey": {
+              "e": "",
+              "n": ""
+          },
+          "privateKey": {
+              "d": "",
+              "n": ""
+          }
+      }
+  },
+  {
       "id": 7,
       "name": "Emily White",
       "role": "Senior Developer",
       "profilePic": "/snooper.png",
-      "password": "password"
-    },
-    {
+      "password": "password",
+      "rsaKeys": {
+          "publicKey": {
+              "e": "",
+              "n": ""
+          },
+          "privateKey": {
+              "d": "",
+              "n": ""
+          }
+      }
+  },
+  {
       "id": 8,
       "name": "Franklin Harris",
       "role": "Junior Developer",
       "profilePic": "/snooper.png",
-      "password": "password"
-    },
-    {
+      "password": "password",
+      "rsaKeys": {
+          "publicKey": {
+              "e": "",
+              "n": ""
+          },
+          "privateKey": {
+              "d": "",
+              "n": ""
+          }
+      }
+  },
+  {
       "id": 9,
       "name": "Grace Lee",
       "role": "Junior Developer",
       "profilePic": "/snooper.png",
-      "password": "password"
-    },
-    {
+      "password": "password",
+      "rsaKeys": {
+          "publicKey": {
+              "e": "",
+              "n": ""
+          },
+          "privateKey": {
+              "d": "",
+              "n": ""
+          }
+      }
+  },
+  {
       "id": 10,
       "name": "Hannah Walker",
       "role": "Junior Developer",
       "profilePic": "/snooper.png",
-      "password": "password"
-    }
-  ]
-  
+      "password": "password",
+      "rsaKeys": {
+          "publicKey": {
+              "e": "",
+              "n": ""
+          },
+          "privateKey": {
+              "d": "",
+              "n": ""
+          }
+      }
+  }
+]
