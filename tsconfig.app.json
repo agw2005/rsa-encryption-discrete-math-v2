@@ -23,6 +23,7 @@
     /*Handle JSON*/
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    "strict": true
   },
   "include": ["src"]
 }

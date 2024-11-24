@@ -22,13 +22,15 @@ const DeveloperPage: React.FC = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [password, setPassword] = useState("");
+  // const [password, setPassword] = useState("");
   const [activeSection, setActiveSection] = useState("send"); // Default to 'send'
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
-      const user = usersData.find((user) => user.id === parseInt(userId));
+      const user: User | undefined = usersData.find(
+        (user) => user.id === parseInt(userId)
+      );
       setCurrentUser(user || null);
     } else {
       navigate("/login");
@@ -138,14 +140,14 @@ const DeveloperPage: React.FC = () => {
                     {isOpen && (
                       <div className="dropdown-menu">
                         {usersData
-                          .filter((user) =>
+                          .filter((user: User) =>
                             canAccess(
                               currentUser?.role || "",
                               user.role,
                               accessGraph
                             )
                           ) // Filter berdasarkan akses yang benar
-                          .map((user) => (
+                          .map((user: User) => (
                             <div
                               key={user.id}
                               className="dropdown-item"

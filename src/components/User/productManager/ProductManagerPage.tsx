@@ -23,7 +23,7 @@ const ProductManagerPage: React.FC = () => {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
-      const user = usersData.find((user) => user.id === parseInt(userId));
+      const user = usersData.find((user: User) => user.id === parseInt(userId));
       setCurrentUser(user || null);
     } else {
       navigate("/login");
@@ -158,14 +158,14 @@ const ProductManagerPage: React.FC = () => {
                     {isOpen && (
                       <div className="dropdown-menu">
                         {usersData
-                          .filter((user) =>
+                          .filter((user: User) =>
                             canAccess(
                               currentUser?.role || "",
                               user.role,
                               accessGraph
                             )
                           ) // Filter berdasarkan akses yang benar
-                          .map((user) => (
+                          .map((user: User) => (
                             <div
                               key={user.id}
                               className="dropdown-item"
