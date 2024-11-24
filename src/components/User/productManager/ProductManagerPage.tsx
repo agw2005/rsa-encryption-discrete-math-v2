@@ -38,7 +38,7 @@ interface Message {
   date: string;
 }
 
-interface Log {
+interface LOG {
   id: number; 
   from: number; 
   to: number; 
