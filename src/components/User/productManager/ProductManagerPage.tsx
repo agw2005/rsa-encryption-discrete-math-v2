@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./ProductManagerPage.css";
-import usersData from "../../../data/users.json";
-import { accessGraph, accessgraph } from "../../../Data/accessGraph"; // Pastikan path impor benar
+import usersData from "../../ComponentData/users.json";
+import { accessGraph, accessGraphProp } from "../../ComponentData/accessGraph";
 
 interface User {
   id: number;
@@ -44,7 +44,7 @@ const ProductManagerPage: React.FC = () => {
   const canAccess = (
     currentRole: string,
     targetRole: string,
-    graph: accessgraph
+    graph: accessGraphProp
   ): boolean => {
     const accessibleRoles = graph[currentRole] || [];
     return accessibleRoles.includes(targetRole);

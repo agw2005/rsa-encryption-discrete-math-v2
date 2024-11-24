@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { LogOut } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import "./DeveloperPage.css";
-import usersData from "../../../data/users.json";
-import { accessGraph } from "../../../Data/accessGraph";
+import usersData from "../../ComponentData/users.json";
+import { accessGraph } from "../../ComponentData/accessGraph";
 
 interface User {
   id: number;
@@ -29,7 +29,7 @@ const DeveloperPage: React.FC = () => {
     const userId = localStorage.getItem("userId");
     if (userId) {
       const user: User | undefined = usersData.find(
-        (user) => user.id === parseInt(userId)
+        (user: User) => user.id === parseInt(userId)
       );
       setCurrentUser(user || null);
     } else {
