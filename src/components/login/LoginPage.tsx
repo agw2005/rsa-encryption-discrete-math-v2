@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { ChevronDown, Lock } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
-import './LoginPage.css';
-import usersData from '../../data/users.json';
+import React, { useState } from "react";
+import { ChevronDown, Lock } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import "./LoginPage.css";
+import usersData from "../../data/users.json";
 
 interface User {
   id: number;
@@ -15,7 +15,7 @@ interface User {
 const LoginPage: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [password, setPassword] = useState('');
+  const [password, setPassword] = useState("");
   const navigate = useNavigate(); // For navigation
 
   const handleUserSelect = (user: User) => {
@@ -29,28 +29,27 @@ const LoginPage: React.FC = () => {
     // Check if the entered password matches
     if (password === selectedUser.password) {
       // Save user ID to localStorage (or sessionStorage)
-      localStorage.setItem('userId', selectedUser.id.toString());
-      
+      localStorage.setItem("userId", selectedUser.id.toString());
+
       // Navigate to the respective page based on the user's role
       switch (selectedUser.role) {
-        case 'Chief Operating Officer':
-
-          navigate('/product_manager');
+        case "Chief Operating Officer":
+          navigate("/product_manager");
           break;
-        case 'Senior Developer':
+        case "Senior Developer":
           navigate("/developer");
           break;
-        case 'Product Manager':
-          navigate('/product_manager');
+        case "Product Manager":
+          navigate("/product_manager");
           break;
-        case 'Junior Developer':
+        case "Junior Developer":
           navigate("/developer");
           break;
         default:
-          navigate('/');
+          navigate("/");
       }
     } else {
-      alert('Invalid password');
+      alert("Invalid password");
     }
   };
 
@@ -67,10 +66,17 @@ const LoginPage: React.FC = () => {
           <h2 className="login-title">Login</h2>
 
           <div className="dropdown-container">
-            <div className="dropdown-trigger" onClick={() => setIsOpen(!isOpen)}>
+            <div
+              className="dropdown-trigger"
+              onClick={() => setIsOpen(!isOpen)}
+            >
               {selectedUser ? (
                 <div className="user-card">
-                  <img src={selectedUser.profilePic} alt={selectedUser.name} className="profile-image" />
+                  <img
+                    src={selectedUser.profilePic}
+                    alt={selectedUser.name}
+                    className="profile-image"
+                  />
                   <div className="user-info">
                     <p className="user-name">{selectedUser.name}</p>
                     <p className="user-role">{selectedUser.role}</p>
@@ -90,7 +96,11 @@ const LoginPage: React.FC = () => {
                     className="dropdown-item"
                     onClick={() => handleUserSelect(user)}
                   >
-                    <img src={user.profilePic} alt={user.name} className="profile-image" />
+                    <img
+                      src={user.profilePic}
+                      alt={user.name}
+                      className="profile-image"
+                    />
                     <div className="user-info">
                       <p className="user-name">{user.name}</p>
                       <p className="user-role">{user.role}</p>

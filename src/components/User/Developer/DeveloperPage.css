@@ -27,7 +27,6 @@ header {
   max-height: 2rem;
 }
 
-
 .logout-button {
   max-height: 4rem;
   margin: 0;
@@ -366,7 +365,6 @@ img:hover {
 }
 
 /* S-O section !!! */
-
 
 @keyframes fadeIn {
   from {
