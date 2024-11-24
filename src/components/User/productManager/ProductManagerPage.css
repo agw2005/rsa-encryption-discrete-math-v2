@@ -1,0 +1,140 @@
+p {
+  margin: 0;
+}
+
+/* !!! Header Section */
+
+header {
+  padding: 0.7rem 3rem;
+  background-color: var(--primary-color);
+  position: fixed;
+  top: 0;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.5));
+
+  z-index: 1000 !important;
+}
+
+.left-header {
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  max-height: 2rem;
+}
+
+.logout-button {
+  max-height: 4rem;
+  margin: 0;
+  margin-right: 7rem;
+  position: relative;
+  top: 0.2rem;
+  background: rgba(0, 0, 0, 0.1);
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.logout-button:hover {
+  background-color: var(--tertiary-color);
+}
+
+.logout-icon {
+  color: white;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+/* Header Section !!! */
+
+/* Message Section !!! */
+
+/* !!! S-O section */
+.snooper-s-o-container {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 9.5rem;
+  margin-bottom: 10%;
+}
+
+.snooper-traffics {
+  height: 2.5rem;
+  max-width: 60rem;
+  min-width: 27rem;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: var(--primary-border);
+}
+
+.snooper-traffics div {
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  width: 20%;
+  height: 100%;
+  text-align: center;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.snooper-traffics div:hover {
+  background-color: var(--border-color);
+  color: var(--hover-text-color);
+  cursor: pointer;
+}
+
+.snooper-traffics div.active {
+  background-color: var(--border-color);
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+.snooper-outer-body {
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  width: 100%;
+  height: 45rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.snooper-inner-body {
+  border: var(--primary-border);
+  background-color: var(--secondary-color);
+  height: 75%;
+  width: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-color);
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-menu {
+  position: relative;
+  z-index: 5;
+}
