@@ -15,6 +15,7 @@ interface User {
 const ProductManagerPage: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState('graph'); // Default to 'send'
 
   useEffect(() => {
     // Fetch the user ID from localStorage
@@ -29,6 +30,26 @@ const ProductManagerPage: React.FC = () => {
     }
   }, [navigate]);
 
+
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState<User | null>(null);
+
+
+  useEffect(() => {
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      const user = usersData.find((user) => user.id === parseInt(userId));
+      setCurrentUser(user || null);
+    } else {
+      navigate('/login');
+    }
+  }, [navigate]);
+
+  const handleUserSelect = (user: User) => {
+    setSelectedUser(user);
+    setIsOpen(false);
+  };
   const handleLogout = () => {
     // Clear user data and navigate to the login page
     localStorage.removeItem('userId');
@@ -64,15 +85,112 @@ const ProductManagerPage: React.FC = () => {
       </section>
 
       <section className="snooper-s-o-container">
-        <div className="snooper-traffics">
-          <div id="traffic-two">Network Graph</div>
-          <div id="traffic-one">Traffic log</div>
-          <div id="traffic-two">Manage</div>
+      <div className="snooper-traffics">
+        <div
+          id="graph"
+          className={activeSection === 'graph' ? 'active' : ''}
+          onClick={() => setActiveSection('graph')}
+        >
+          Role Graph
         </div>
-        <div className="snooper-outer-body">
-          {/* Add any specific content for Product Manager page */}
+        <div
+          id="traffic"
+          className={activeSection === 'traffic' ? 'active' : ''}
+          onClick={() => setActiveSection('traffic')}
+        >
+          Traffic log
         </div>
-      </section>
+        <div
+          id="manage"
+          className={activeSection === 'manage' ? 'active' : ''}
+          onClick={() => setActiveSection('manage')}
+        >
+          Manage
+        </div>
+        <div
+          id="send-option"
+          className={activeSection === 'send' ? 'active' : ''}
+          onClick={() => setActiveSection('send')}
+        >
+          Send
+        </div>
+        <div
+          id="receive-option"
+          className={activeSection === 'inbox' ? 'active' : ''}
+          onClick={() => setActiveSection('inbox')}
+        >
+          Inbox
+        </div>
+      </div>
+
+      <div className="snooper-outer-body">
+        {activeSection === 'graph' && <div>Graph </div>}
+        {activeSection === 'traffic' && <div>Traffic Log Content</div>}
+        {activeSection === 'manage' && <div>Manage Content</div>}
+        {activeSection === 'send' && <div id="send" className="userOne-inner-body">
+          <div className="userOne-form-section">
+            <form>
+              <div className="dropdown-container">
+                <div className="dropdown-trigger" onClick={() => setIsOpen(!isOpen)}>
+                  {selectedUser ? (
+                    <div className="user-card">
+                      <img
+                        src={selectedUser.profilePic}
+                        alt={selectedUser.name}
+                        className="profile-image"
+                      />
+                      <div className="user-info">
+                        <p className="user-name">{selectedUser.name}</p>
+                        <p className="user-role">{selectedUser.role}</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <span className="select-prompt">Select User</span>
+                  )}
+                </div>
+
+                {isOpen && (
+                  <div className="dropdown-menu">
+                    {usersData.map((user) => (
+                      <div
+                        key={user.id}
+                        className="dropdown-item"
+                        onClick={() => handleUserSelect(user)}
+                      >
+                        <img src={user.profilePic} alt={user.name} className="profile-image" />
+                        <div className="user-info">
+                          <p className="user-name">{user.name}</p>
+                          <p className="user-role">{user.role}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              <input
+                type="text"
+                name="message-subject"
+                id="message-subject"
+                placeholder="Message subject..."
+              />
+              <textarea
+                cols={7}
+                name="message-content"
+                id="message-content"
+                placeholder="What message do you want to send?"
+              ></textarea>
+            </form>
+
+            <div className="userOne-send-section">
+              <p>Message sent will be encrypted</p>
+              <img src="/send.png" alt="" />
+            </div>
+          </div>
+        </div>}
+        {activeSection === 'inbox' && <div>Inbox Content</div>}
+      </div>
+    </section>
     </div>
   );
 };
