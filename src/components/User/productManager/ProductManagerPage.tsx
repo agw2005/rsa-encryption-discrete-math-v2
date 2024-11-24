@@ -3,14 +3,14 @@ import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './ProductManagerPage.css';
 import usersData from '../../../data/users.json';
-import { accessGraph, accessgraph } from '../../../Data/accessGraph'; // Pastikan path impor benar
+import { accessGraph, accessgraph } from '../../../Data/accessGraph'; // Ensure the import path is correct
+import Graph from './Graph'; // Import the Graph component
 
 interface User {
   id: number;
   name: string;
   role: string;
   profilePic: string;
-  password: string;
 }
 
 const ProductManagerPage: React.FC = () => {
@@ -40,7 +40,7 @@ const ProductManagerPage: React.FC = () => {
     navigate('/login');
   };
 
-  // Fungsi untuk memeriksa akses berdasarkan role
+  // Function to check access based on role
   const canAccess = (currentRole: string, targetRole: string, graph: accessgraph): boolean => {
     const accessibleRoles = graph[currentRole] || [];
     return accessibleRoles.includes(targetRole);
@@ -114,7 +114,7 @@ const ProductManagerPage: React.FC = () => {
         </div>
 
         <div className="snooper-outer-body">
-          {activeSection === 'graph' && <div>Graph</div>}
+          {activeSection === 'graph' && <Graph />} {/* Render the Graph component here */}
           {activeSection === 'traffic' && <div>Traffic Log Content</div>}
           {activeSection === 'manage' && <div>Manage Content</div>}
           {activeSection === 'send' && (
