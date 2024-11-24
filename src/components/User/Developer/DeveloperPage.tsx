@@ -3,6 +3,7 @@ import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './DeveloperPage.css';
 import usersData from '../../../data/users.json';
+import { accessGraph, accessgraph } from '../../../Data/accessGraph';
 
 interface User {
   id: number;
@@ -11,6 +12,11 @@ interface User {
   profilePic: string;
   password: string;
 }
+
+interface AccessGraph {
+  [role: string]: string[];
+}
+
 
 const DeveloperPage: React.FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -41,6 +47,13 @@ const DeveloperPage: React.FC = () => {
 
   const handleLogin = () => {
     // Your login logic here
+  };
+
+  // Perbaikan di fungsi canAccess
+  const canAccess = (currentRole: string, targetRole: string, graph: AccessGraph): boolean => {
+    // Cek apakah targetRole ada dalam daftar akses untuk currentRole
+    const accessibleRoles = graph[currentRole] || [];
+    return accessibleRoles.includes(targetRole);
   };
 
   if (!currentUser) {
@@ -101,19 +114,21 @@ const DeveloperPage: React.FC = () => {
 
                   {isOpen && (
                     <div className="dropdown-menu">
-                      {usersData.map((user) => (
-                        <div
-                          key={user.id}
-                          className="dropdown-item"
-                          onClick={() => handleUserSelect(user)}
-                        >
-                          <img src={user.profilePic} alt={user.name} className="profile-image" />
-                          <div className="user-info">
-                            <p className="user-name">{user.name}</p>
-                            <p className="user-role">{user.role}</p>
+                      {usersData
+                        .filter((user) => canAccess(currentUser?.role || "", user.role, accessGraph)) // Filter berdasarkan akses yang benar
+                        .map((user) => (
+                          <div
+                            key={user.id}
+                            className="dropdown-item"
+                            onClick={() => handleUserSelect(user)}
+                          >
+                            <img src={user.profilePic} alt={user.name} className="profile-image" />
+                            <div className="user-info">
+                              <p className="user-name">{user.name}</p>
+                              <p className="user-role">{user.role}</p>
+                            </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
                     </div>
                   )}
                 </div>
