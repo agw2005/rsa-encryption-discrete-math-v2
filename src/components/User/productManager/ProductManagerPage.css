@@ -17,7 +17,7 @@ header {
 
   filter: drop-shadow(0px 3px 5px rgba(0, 0, 0, 0.5));
 
-  z-index: 3;
+  z-index: 1000 !important;
 }
 
 .left-header {
@@ -26,7 +26,6 @@ header {
   gap: 4rem;
   max-height: 2rem;
 }
-
 
 .logout-button {
   max-height: 4rem;
@@ -71,23 +70,23 @@ header {
   max-width: 60rem;
   min-width: 27rem;
   display: flex;
-  justify-content: space-between; 
-  border-bottom: var(--primary-border); 
+  justify-content: space-between;
+  border-bottom: var(--primary-border);
 }
 
 .snooper-traffics div {
   border: var(--primary-border);
   background-color: var(--secondary-color);
   color: var(--text-color);
-  width: 20%; 
-  height: 100%; 
+  width: 20%;
+  height: 100%;
   text-align: center;
-  padding: 0; 
-  display: flex; 
-  align-items: center; 
-  justify-content: center; 
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   transition: background-color 0.3s ease, color 0.3s ease;
-  box-sizing: border-box; 
+  box-sizing: border-box;
 }
 
 .snooper-traffics div:hover {
@@ -133,4 +132,9 @@ header {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.dropdown-menu {
+  position: relative;
+  z-index: 5;
 }
