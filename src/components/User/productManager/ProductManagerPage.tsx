@@ -3,8 +3,8 @@ import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './ProductManagerPage.css';
 import usersData from '../../../data/users.json';
-import { accessGraph, accessgraph } from '../../../Data/accessGraph'; // Ensure the import path is correct
-import Graph from './Graph'; // Import the Graph component
+import { accessGraph, accessgraph } from '../../../Data/accessGraph'; 
+import Graph from './Graph'; 
 
 interface User {
   id: number;
@@ -18,7 +18,7 @@ const ProductManagerPage: React.FC = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [activeSection, setActiveSection] = useState('graph'); // Default to 'graph'
+  const [activeSection, setActiveSection] = useState('graph'); 
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
@@ -40,14 +40,13 @@ const ProductManagerPage: React.FC = () => {
     navigate('/login');
   };
 
-  // Function to check access based on role
   const canAccess = (currentRole: string, targetRole: string, graph: accessgraph): boolean => {
     const accessibleRoles = graph[currentRole] || [];
     return accessibleRoles.includes(targetRole);
   };
 
   if (!currentUser) {
-    return <div>Loading...</div>; // Loading state if the user is not yet fetched
+    return <div>Loading...</div>; 
   }
 
   return (
@@ -114,7 +113,7 @@ const ProductManagerPage: React.FC = () => {
         </div>
 
         <div className="snooper-outer-body">
-          {activeSection === 'graph' && <Graph />} {/* Render the Graph component here */}
+          {activeSection === 'graph' && <Graph />} {}
           {activeSection === 'traffic' && <div>Traffic Log Content</div>}
           {activeSection === 'manage' && <div>Manage Content</div>}
           {activeSection === 'send' && (
@@ -143,7 +142,7 @@ const ProductManagerPage: React.FC = () => {
                     {isOpen && (
                       <div className="dropdown-menu">
                         {usersData
-                          .filter((user) => canAccess(currentUser?.role || "", user.role, accessGraph)) // Filter berdasarkan akses yang benar
+                          .filter((user) => canAccess(currentUser?.role || "", user.role, accessGraph)) 
                           .map((user) => (
                             <div
                               key={user.id}

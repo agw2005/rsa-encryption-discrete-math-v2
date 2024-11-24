@@ -1,12 +1,11 @@
 .graph-container {
   width: 100%;
-  height: 300px; /* Adjust height as needed */
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #392121; /* Background color for the graph area */
-  border: 1px solid #ccc; /* Optional border */
-  margin-top: 20px; /* Space above the graph */
+  background-color: var(--secondary-color);
+  margin-top: 0px;
 }
 
 .svg-container {
@@ -14,57 +13,56 @@
   height: 100%;
 }
 
-/* Styling for each role */
 .circle-Chief-Operating-Officer {
-  fill: #FF6384; /* Red */
+  fill: hsl(347, 89%, 45%);
 }
 
 .circle-Product-Manager {
-  fill: #36A2EB; /* Blue */
+  fill: #086eb2;
 }
 
 .line-Product-Manager {
-  stroke: #36A2EB; /* Blue */
+  stroke: #36A2EB;
 }
 .circle-Product-Manager-Branch1 {
-  fill: #36A2EB; /* Blue */
+  fill: #36A2EB;
 }
 
 .circle-Product-Manager-Branch2 {
-  fill: #36A2EB; /* Blue */
+  fill: #36A2EB;
 }
 
 .circle-Product-Manager-Branch3 {
-  fill: #36A2EB; /* Blue */
+  fill: #36A2EB;
 }
 
 .circle-Senior-Developer {
-  fill: #FFCE56; /* Yellow */
+  fill: #FFCE56;
 }
 
 .circle-Junior-Developer {
-  fill: #FFCE56; /* Yellow */
+  fill: #FFCE56;
 }
 
 .circle-Junior-Developer-Branch {
-  fill: #FFCE56; /* Yellow */
-  transition: transform 0.2s; /* Smooth transition for hover effects */
+  fill: #FFCE56;
+  transition: transform 0.2s;
 }
 
 .circle-Junior-Developer-Branch:hover {
-  transform: scale(1.1); /* Slightly enlarge circle on hover */
+  transform: scale(1.1);
 }
 
 line {
-  stroke: #ccc; /* Default line color */
-  stroke-width: 2; /* Line thickness */
-  stroke-linecap: round; /* Adjust line cap to prevent line from passing the circle */
-  stroke-dasharray: 10, 5; /* Dashed line effect */
+  stroke: #502800; 
+  stroke-width: 2;
+  stroke-linecap: round;
 }
 
 text {
-  font-family: Arial, sans-serif; /* Font family for text */
-  font-weight: bold; /* Bold text for better visibility */
-  pointer-events: none; /* Prevent text from interfering with mouse events */
-  transform: translateY(-60px); /* Raise the role's name more */
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  pointer-events: none;
+  transform: translateY(-60px);
+  fill: #663504;
 }
