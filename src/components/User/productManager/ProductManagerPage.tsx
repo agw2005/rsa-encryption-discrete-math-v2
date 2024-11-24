@@ -3,8 +3,9 @@ import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './ProductManagerPage.css';
 import usersData from '../../../data/users.json';
-import { accessGraph, accessgraph } from '../../../Data/accessGraph'; // Pastikan path impor benar
+import { accessGraph, accessgraph } from '../../../Data/accessGraph'; // Ensure correct import path
 import { generateKeys, encrypt, decrypt } from "../../../functions/rsaUtilis";
+import Graph from './Graph'; // Import Graph component
 
 interface RSAKey {
   e: string;
@@ -28,23 +29,23 @@ interface User {
   };
 }
 
-
 interface Message {
-  id: number; // Add the 'id' property to uniquely identify each message
+  id: number;
   from: number;
   to: number;
   subject: string;
   content: string;
-  date: string; // Add the 'date' property to store when the message was sent
+  date: string;
 }
 
-interface LOG {
+interface Log {
   id: number; 
   from: number; 
   to: number; 
-  content: string; // Only hold 15 characters then "..."
+  content: string;
   date: string; 
 }
+
 
 
 const ProductManagerPage: React.FC = () => {
@@ -187,7 +188,7 @@ const ProductManagerPage: React.FC = () => {
     navigate('/login');
   };
 
-  // Check if the current user has access to the target role
+
   const canAccess = (currentRole: string, targetRole: string, graph: accessgraph): boolean => {
     const accessibleRoles = graph[currentRole] || [];
     return accessibleRoles.includes(targetRole);
@@ -308,7 +309,8 @@ const ProductManagerPage: React.FC = () => {
         </div>
 
         <div className="snooper-outer-body">
-          {activeSection === 'graph' && <div>Graph</div>}
+          {activeSection === 'graph' && <Graph />} {/* Render the Graph component here */}
+
           {activeSection === 'traffic' && 
           <div className="generate-keys-section">
           <h1>RSA Encryption</h1>
@@ -339,6 +341,7 @@ const ProductManagerPage: React.FC = () => {
     </div>
   </div>
         </div>}
+          {activeSection === 'traffic' && <div>Traffic Log Content</div>}
           {activeSection === 'manage' && <div>Manage Content</div>}
           
           

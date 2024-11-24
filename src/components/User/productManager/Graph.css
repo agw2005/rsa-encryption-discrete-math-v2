@@ -1,0 +1,70 @@
+.graph-container {
+  width: 100%;
+  height: 300px; /* Adjust height as needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #392121; /* Background color for the graph area */
+  border: 1px solid #ccc; /* Optional border */
+  margin-top: 20px; /* Space above the graph */
+}
+
+.svg-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Styling for each role */
+.circle-Chief-Operating-Officer {
+  fill: #FF6384; /* Red */
+}
+
+.circle-Product-Manager {
+  fill: #36A2EB; /* Blue */
+}
+
+.line-Product-Manager {
+  stroke: #36A2EB; /* Blue */
+}
+.circle-Product-Manager-Branch1 {
+  fill: #36A2EB; /* Blue */
+}
+
+.circle-Product-Manager-Branch2 {
+  fill: #36A2EB; /* Blue */
+}
+
+.circle-Product-Manager-Branch3 {
+  fill: #36A2EB; /* Blue */
+}
+
+.circle-Senior-Developer {
+  fill: #FFCE56; /* Yellow */
+}
+
+.circle-Junior-Developer {
+  fill: #FFCE56; /* Yellow */
+}
+
+.circle-Junior-Developer-Branch {
+  fill: #FFCE56; /* Yellow */
+  transition: transform 0.2s; /* Smooth transition for hover effects */
+}
+
+.circle-Junior-Developer-Branch:hover {
+  transform: scale(1.1); /* Slightly enlarge circle on hover */
+}
+
+line {
+  stroke: #ccc; /* Default line color */
+  stroke-width: 2; /* Line thickness */
+  stroke-linecap: round; /* Adjust line cap to prevent line from passing the circle */
+  stroke-dasharray: 10, 5; /* Dashed line effect */
+}
+
+text {
+  font-family: Arial, sans-serif; /* Font family for text */
+  font-weight: bold; /* Bold text for better visibility */
+  pointer-events: none; /* Prevent text from interfering with mouse events */
+  transform: translateY(-60px); /* Raise the role's name more */
+}
