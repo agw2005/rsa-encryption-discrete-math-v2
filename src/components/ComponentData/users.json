@@ -1,5 +1,4 @@
 [
-  {
     {
       "id": 1,
       "name": "John Doe",
@@ -153,7 +152,6 @@
           }
       }
   },
-  {
     {
       "id": 10,
       "name": "Hannah Walker",
