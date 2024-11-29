@@ -1,0 +1,68 @@
+.graph-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  margin-top: 0px;
+}
+
+.svg-container {
+  width: 100%;
+  height: 100%;
+}
+
+.circle-Chief-Operating-Officer {
+  fill: hsl(347, 89%, 45%);
+}
+
+.circle-Product-Manager {
+  fill: #086eb2;
+}
+
+.line-Product-Manager {
+  stroke: #36A2EB;
+}
+.circle-Product-Manager-Branch1 {
+  fill: #36A2EB;
+}
+
+.circle-Product-Manager-Branch2 {
+  fill: #36A2EB;
+}
+
+.circle-Product-Manager-Branch3 {
+  fill: #36A2EB;
+}
+
+.circle-Senior-Developer {
+  fill: #FFCE56;
+}
+
+.circle-Junior-Developer {
+  fill: #FFCE56;
+}
+
+.circle-Junior-Developer-Branch {
+  fill: #FFCE56;
+  transition: transform 0.2s;
+}
+
+.circle-Junior-Developer-Branch:hover {
+  transform: scale(1.1);
+}
+
+line {
+  stroke: #502800; 
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+text {
+  font-family: Arial, sans-serif;
+  font-weight: bold;
+  pointer-events: none;
+  transform: translateY(-60px);
+  fill: #663504;
+}
