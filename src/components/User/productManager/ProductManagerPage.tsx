@@ -3,7 +3,7 @@ import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './ProductManagerPage.css';
 import usersData from'../../ComponentData/users.json'; //
-import { accessGraph, accessgraph } from '../../ComponentData/accessGraph'; // Ensure correct import path
+import { accessGraph, accessGraphProp } from '../../ComponentData/accessGraph'; // Ensure correct import path
 import { generateKeys, encrypt, decrypt } from "../../../functions/rsaUtilis";
 
 
@@ -192,7 +192,7 @@ const ProductManagerPage: React.FC = () => {
   };
 
 
-  const canAccess = (currentRole: string, targetRole: string, graph: accessgraph): boolean => {
+  const canAccess = (currentRole: string, targetRole: string, graph: accessGraphProp): boolean => {
     const accessibleRoles = graph[currentRole] || [];
     return accessibleRoles.includes(targetRole);
   };

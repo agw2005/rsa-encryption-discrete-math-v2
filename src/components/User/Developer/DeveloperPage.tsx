@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { LogOut } from 'lucide-react';
+
+
 import { useNavigate } from 'react-router-dom';
 import './DeveloperPage.css';
 import usersData from  '../../ComponentData/users.json';
-import { accessGraph, accessgraph } from '../../ComponentData/accessGraph';
+import { accessGraph, accessGraphProp } from '../../ComponentData/accessGraph';
 import { generateKeys, encrypt, decrypt } from "../../../functions/rsaUtilis";
 
 
@@ -58,7 +60,7 @@ const DeveloperPage: React.FC = () => {
   const [activeSection, setActiveSection] = useState("send");
   const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
 
-  const canAccess = (currentRole: string, targetRole: string, graph: accessgraph): boolean => {
+  const canAccess = (currentRole: string, targetRole: string, graph: accessGraphProp): boolean => {
     const accessibleRoles = graph[currentRole] || [];
     return accessibleRoles.includes(targetRole);
   };
