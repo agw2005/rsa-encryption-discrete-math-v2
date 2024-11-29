@@ -27,14 +27,12 @@ header {
   max-height: 2rem;
 }
 
-
 header img:hover {
   opacity: 0.8;
   cursor: pointer;
 }
 
 /* Header Section !!! */
-
 
 /* Login Container Styles */
 .login-container {

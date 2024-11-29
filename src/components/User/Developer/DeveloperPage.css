@@ -27,7 +27,6 @@ header {
   max-height: 2rem;
 }
 
-
 .logout-button {
   max-height: 4rem;
   margin: 0;
@@ -516,6 +515,7 @@ img:hover {
 .inbox-message-list::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
 @keyframes fadeIn {
   from {
     opacity: 0;

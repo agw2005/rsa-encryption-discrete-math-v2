@@ -18,7 +18,6 @@ interface PrivateRSAKey {
   d: string;
   n: string;
 }
-
 interface User {
   id: number;
   name: string;
@@ -47,7 +46,6 @@ interface LOG {
   content: string; // Only hold 15 characters then "..."
   date: string; 
 }
-
 const DeveloperPage: React.FC = () => {
 
   const [currentUser, setCurrentUser] = useState<User | null>(null);
@@ -72,7 +70,9 @@ const DeveloperPage: React.FC = () => {
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
-      const user = usersData.find((user) => user.id === parseInt(userId));
+      const user: User | undefined = usersData.find(
+        (user: User) => user.id === parseInt(userId)
+      );
       setCurrentUser(user || null);
       setUsers(usersData);
     } else {
@@ -203,7 +203,11 @@ const getSenderName = (userId: number): string => {
         <div className="header-content">
           <img src="/picraft-logo.png" alt="logo" className="logo" />
         </div>
-        <button onClick={handleLogout} className="logout-button" aria-label="Logout">
+        <button
+          onClick={handleLogout}
+          className="logout-button"
+          aria-label="Logout"
+        >
           <LogOut className="logout-icon" />
         </button>
       </header>
@@ -213,7 +217,11 @@ const getSenderName = (userId: number): string => {
           <p>{currentUser.name}</p>
         </div>
         <div className="snooper-content-body">
-          <img className="snooper-profile-pic" src={currentUser.profilePic} alt="profile-pic" />
+          <img
+            className="snooper-profile-pic"
+            src={currentUser.profilePic}
+            alt="profile-pic"
+          />
           <div className="snooper-content-text">
             <p>{currentUser.role}</p>
             <p>– System</p>

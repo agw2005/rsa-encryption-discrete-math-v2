@@ -16,7 +16,6 @@ interface PrivateRSAKey {
   d: string;
   n: string;
 }
-
 interface User {
   id: number;
   name: string;
@@ -187,8 +186,8 @@ const ProductManagerPage: React.FC = () => {
 
   // Handle logout
   const handleLogout = () => {
-    localStorage.removeItem('userId');
-    navigate('/login');
+    localStorage.removeItem("userId");
+    navigate("/login");
   };
 
 
@@ -254,7 +253,11 @@ const ProductManagerPage: React.FC = () => {
         <div className="header-content">
           <img src="/picraft-logo.png" alt="logo" className="logo" />
         </div>
-        <button onClick={handleLogout} className="logout-button" aria-label="Logout">
+        <button
+          onClick={handleLogout}
+          className="logout-button"
+          aria-label="Logout"
+        >
           <LogOut className="logout-icon" />
         </button>
       </header>
@@ -264,7 +267,11 @@ const ProductManagerPage: React.FC = () => {
           <p>{currentUser.name}</p>
         </div>
         <div className="snooper-content-body">
-          <img className="snooper-profile-pic" src={currentUser.profilePic} alt="profile-pic" />
+          <img
+            className="snooper-profile-pic"
+            src={currentUser.profilePic}
+            alt="profile-pic"
+          />
           <div className="snooper-content-text">
             <p>{currentUser.role}</p>
             <p>– System</p>
@@ -278,29 +285,29 @@ const ProductManagerPage: React.FC = () => {
      
           <div
             id="traffic"
-            className={activeSection === 'traffic' ? 'active' : ''}
-            onClick={() => setActiveSection('traffic')}
+            className={activeSection === "traffic" ? "active" : ""}
+            onClick={() => setActiveSection("traffic")}
           >
             Traffic log
           </div>
           <div
             id="manage"
-            className={activeSection === 'manage' ? 'active' : ''}
-            onClick={() => setActiveSection('manage')}
+            className={activeSection === "manage" ? "active" : ""}
+            onClick={() => setActiveSection("manage")}
           >
             Manage
           </div>
           <div
             id="send-option"
-            className={activeSection === 'send' ? 'active' : ''}
-            onClick={() => setActiveSection('send')}
+            className={activeSection === "send" ? "active" : ""}
+            onClick={() => setActiveSection("send")}
           >
             Send
           </div>
           <div
             id="receive-option"
-            className={activeSection === 'inbox' ? 'active' : ''}
-            onClick={() => setActiveSection('inbox')}
+            className={activeSection === "inbox" ? "active" : ""}
+            onClick={() => setActiveSection("inbox")}
           >
             Inbox
           </div>
