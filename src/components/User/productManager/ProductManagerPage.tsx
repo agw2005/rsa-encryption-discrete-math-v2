@@ -276,13 +276,13 @@ const ProductManagerPage: React.FC = () => {
 
       <section className="snooper-s-o-container">
         <div className="snooper-traffics">
-          <div
+{/*           <div
             id="graph"
             className={activeSection === 'graph' ? 'active' : ''}
             onClick={() => setActiveSection('graph')}
           >
             Role Graph
-          </div>
+          </div> */}
           <div
             id="traffic"
             className={activeSection === 'traffic' ? 'active' : ''}
@@ -313,8 +313,8 @@ const ProductManagerPage: React.FC = () => {
           </div>
         </div>
 
-        <div className="snooper-outer-body">
-          {activeSection === 'graph' && <Graph />} {/* Render the Graph component here */}
+{/*         <div className="snooper-outer-body">
+          {activeSection === 'graph' && <Graph />} {/* Render the Graph component here */} */}
 
           {activeSection === 'traffic' && 
           <div className="generate-keys-section">
