@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { ChevronDown, Lock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './LoginPage.css';
-import usersData from '../../data/users.json';
+import usersData from  '../ComponentData/users.json';
 
 interface User {
   id: number;

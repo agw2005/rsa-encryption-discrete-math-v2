@@ -2,11 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './ProductManagerPage.css';
-import usersData from '../../../data/users.json';
+import usersData from'../../ComponentData/users.json'; //
 import { accessGraph, accessgraph } from '../../ComponentData/accessGraph'; // Ensure correct import path
 import { generateKeys, encrypt, decrypt } from "../../../functions/rsaUtilis";
-import Graph from './Graph'; // Import Graph component
-import { Console } from 'console';
+
 
 interface RSAKey {
   e: string;
@@ -54,7 +53,7 @@ const ProductManagerPage: React.FC = () => {
   const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState<User | null>(null);
-  const [activeSection, setActiveSection] = useState('graph');
+  const [activeSection, setActiveSection] = useState('traffic');
   const [users, setUsers] = useState<User[]>([]);
 
   const [messages, setMessages] = useState<Message[]>([]);
@@ -274,15 +273,10 @@ const ProductManagerPage: React.FC = () => {
         </div>
       </section>
 
+      
       <section className="snooper-s-o-container">
         <div className="snooper-traffics">
-{/*           <div
-            id="graph"
-            className={activeSection === 'graph' ? 'active' : ''}
-            onClick={() => setActiveSection('graph')}
-          >
-            Role Graph
-          </div> */}
+     
           <div
             id="traffic"
             className={activeSection === 'traffic' ? 'active' : ''}
@@ -313,8 +307,7 @@ const ProductManagerPage: React.FC = () => {
           </div>
         </div>
 
-{/*         <div className="snooper-outer-body">
-          {activeSection === 'graph' && <Graph />} {/* Render the Graph component here */} */}
+        <div className="snooper-outer-body">
 
           {activeSection === 'traffic' && 
           <div className="generate-keys-section">
@@ -494,5 +487,6 @@ const ProductManagerPage: React.FC = () => {
     </div>
   );
 };
+
 
 export default ProductManagerPage;
