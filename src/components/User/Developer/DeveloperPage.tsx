@@ -3,7 +3,7 @@ import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './DeveloperPage.css';
 import usersData from '../../../data/users.json';
-import { accessGraph, accessgraph } from '../../../Data/accessGraph';
+import { accessGraph, accessgraph } from '../../ComponentData/accessGraph';
 import { generateKeys, encrypt, decrypt } from "../../../functions/rsaUtilis";
 
 

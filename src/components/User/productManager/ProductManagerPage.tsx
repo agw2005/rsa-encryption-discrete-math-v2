@@ -3,9 +3,10 @@ import { LogOut } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './ProductManagerPage.css';
 import usersData from '../../../data/users.json';
-import { accessGraph, accessgraph } from '../../../Data/accessGraph'; // Ensure correct import path
+import { accessGraph, accessgraph } from '../../ComponentData/accessGraph'; // Ensure correct import path
 import { generateKeys, encrypt, decrypt } from "../../../functions/rsaUtilis";
 import Graph from './Graph'; // Import Graph component
+import { Console } from 'console';
 
 interface RSAKey {
   e: string;
@@ -95,10 +96,12 @@ const ProductManagerPage: React.FC = () => {
 
     // Find the current user by their ID (you may adjust this logic depending on how currentUser is stored)
     const currentUserData = usersData.find((user: User) => user.id === currentUser?.id);
+
+
     if (currentUserData?.rsaKeys?.publicKey) {
       // Check if selectedUser is not null or undefined
       if (selectedUser) {
-        const encryptedContent = encrypt(content, currentUserData.rsaKeys.publicKey);
+       const encryptedContent = encrypt(content, currentUserData.rsaKeys.publicKey);
 
         // Now you can send the encrypted content
         const newMessage = {
@@ -140,9 +143,11 @@ const ProductManagerPage: React.FC = () => {
     const usersData = JSON.parse(localStorage.getItem("users") || "[]");
 
     const currentUserData = usersData.find((user: User) => user.id === currentUser?.id);
+    const test = usersData.find((user: User) => user.id === 1);
 
+    console.log("current name: "+currentUser?.name);
     if (currentUserData?.rsaKeys?.publicKey) {
-      const decryptedContent = decrypt(msg.content, currentUserData.rsaKeys.privateKey);
+      const decryptedContent = decrypt(msg.content, test.rsaKeys.privateKey);
       setSelectedMessage({
         ...msg,
         content: decryptedContent, // Decrypted content

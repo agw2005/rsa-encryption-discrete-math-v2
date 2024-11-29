@@ -1,5 +1,5 @@
 import React from 'react';
-import { accessGraph } from '../../../Data/accessGraph'; // Import the access graph data
+import { accessGraph } from '../../ComponentData/accessGraph'; // Import the access graph data
 import './Graph.css'; // Import the CSS file
 
 const Graph: React.FC = () => {
