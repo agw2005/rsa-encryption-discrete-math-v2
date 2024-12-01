@@ -231,19 +231,24 @@ const ProductManagerPage: React.FC = () => {
     }
   };
 
+  // @ts-ignore: Unused variable
   const [keys, setKeys] = useState<{ publicKey: any; privateKey: any } | null>(
     null
   );
+  // @ts-ignore: Unused variable
   const [message, setMessage] = useState("");
   const [encrypted, setEncrypted] = useState("");
+  // @ts-ignore: Unused variable
   const [decrypted, setDecrypted] = useState("");
 
+  // @ts-ignore: Unused variable
   const handleEncrypt = () => {
     if (keys) {
       setEncrypted(encrypt(message, keys.publicKey));
     }
   };
 
+  // @ts-ignore: Unused variable
   const handleDecrypt = () => {
     if (keys) {
       setDecrypted(decrypt(encrypted, keys.privateKey));
