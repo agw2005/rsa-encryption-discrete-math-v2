@@ -108,11 +108,14 @@ const DeveloperPage: React.FC = () => {
     const usersData = JSON.parse(localStorage.getItem("users") || "[]");
 
     // Find the current user by their ID (you may adjust this logic depending on how currentUser is stored)
-    const currentUserData = usersData.find((user: User) => user.id === currentUser?.id);
-    if (currentUserData?.rsaKeys?.publicKey) {
+
+    const Target = usersData.find((user: User) => user.id === selectedUser?.id);
+
+    
+    if (Target?.rsaKeys?.publicKey) {
       // Check if selectedUser is not null or undefined
       if (selectedUser) {
-        const encryptedContent = encrypt(content, currentUserData.rsaKeys.publicKey);
+        const encryptedContent = encrypt(content, Target.rsaKeys.publicKey);
 
         // Now you can send the encrypted content
         const newMessage = {
