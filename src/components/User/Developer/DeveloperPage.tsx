@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { LogOut } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { LogOut } from "lucide-react";
 
-
-import { useNavigate } from 'react-router-dom';
-import './DeveloperPage.css';
-import usersData from  '../../ComponentData/users.json';
-import { accessGraph, accessGraphProp } from '../../ComponentData/accessGraph';
-import { generateKeys, encrypt, decrypt } from "../../../functions/rsaUtilis";
-
+import { useNavigate } from "react-router-dom";
+import "./DeveloperPage.css";
+import usersData from "../../ComponentData/users.json";
+import { accessGraph, accessGraphProp } from "../../ComponentData/accessGraph";
+import { encrypt, decrypt } from "../../../functions/rsaUtilis";
 
 interface RSAKey {
   e: string;
@@ -40,14 +38,13 @@ interface Message {
 }
 
 interface LOG {
-  id: number; 
-  from: number; 
-  to: number; 
+  id: number;
+  from: number;
+  to: number;
   content: string; // Only hold 15 characters then "..."
-  date: string; 
+  date: string;
 }
 const DeveloperPage: React.FC = () => {
-
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [users, setUsers] = useState<User[]>([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -58,7 +55,11 @@ const DeveloperPage: React.FC = () => {
   const [activeSection, setActiveSection] = useState("send");
   const [selectedMessage, setSelectedMessage] = useState<Message | null>(null);
 
-  const canAccess = (currentRole: string, targetRole: string, graph: accessGraphProp): boolean => {
+  const canAccess = (
+    currentRole: string,
+    targetRole: string,
+    graph: accessGraphProp
+  ): boolean => {
     const accessibleRoles = graph[currentRole] || [];
     return accessibleRoles.includes(targetRole);
   };
@@ -66,7 +67,6 @@ const DeveloperPage: React.FC = () => {
 
   const [log, setLog] = useState<LOG[]>([]); // Initialize LOG state
 
-  
   useEffect(() => {
     const userId = localStorage.getItem("userId");
     if (userId) {
@@ -82,18 +82,18 @@ const DeveloperPage: React.FC = () => {
     //log
     const storedLogs = JSON.parse(localStorage.getItem("logs") || "[]");
     setLog(storedLogs);
-    
+
     //encrypt
 
     const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
-    console.log("Loaded users:", storedUsers); // Check what's being loaded  
+    console.log("Loaded users:", storedUsers); // Check what's being loaded
     setUsers(storedUsers);
     if (usersData) {
       setUsers(usersData);
     }
 
     // Load messages from localStorage
-    const storedMessages = localStorage.getItem('messages');
+    const storedMessages = localStorage.getItem("messages");
     if (storedMessages) {
       setMessages(JSON.parse(storedMessages));
     }
@@ -111,7 +111,6 @@ const DeveloperPage: React.FC = () => {
 
     const Target = usersData.find((user: User) => user.id === selectedUser?.id);
 
-    
     if (Target?.rsaKeys?.publicKey) {
       // Check if selectedUser is not null or undefined
       if (selectedUser) {
@@ -122,21 +121,25 @@ const DeveloperPage: React.FC = () => {
           id: messages.length + 1, // Generate a new unique ID
           from: currentUser?.id || 0,
           to: selectedUser.id,
-  
+
           subject: subject,
           content: encryptedContent,
           date: new Date().toISOString(),
         };
-  
+
         const updatedMessages = [...messages, newMessage];
         setMessages(updatedMessages);
-  
+
         // Save updated messages to localStorage
         localStorage.setItem("messages", JSON.stringify(updatedMessages));
 
-
         //save to log
-        handleLogMessage(currentUser?.id || 0, selectedUser.id, encryptedContent, new Date().toISOString());
+        handleLogMessage(
+          currentUser?.id || 0,
+          selectedUser.id,
+          encryptedContent,
+          new Date().toISOString()
+        );
 
         // Reset form fields
         setSubject("");
@@ -150,8 +153,14 @@ const DeveloperPage: React.FC = () => {
     }
   };
 
-  const handleLogMessage = (from: number, to: number, content: string, date: string) => {
-    const truncatedContent = content.length > 15 ? `${content.slice(0, 15)}...` : content;
+  const handleLogMessage = (
+    from: number,
+    to: number,
+    content: string,
+    date: string
+  ) => {
+    const truncatedContent =
+      content.length > 15 ? `${content.slice(0, 15)}...` : content;
     const newLog = {
       id: log.length + 1,
       from,
@@ -174,14 +183,18 @@ const DeveloperPage: React.FC = () => {
 
   const inboxMessages = messages.filter((msg) => msg.to === currentUser?.id);
 
-
   const handleMessageClick = (msg: Message) => {
     const usersData = JSON.parse(localStorage.getItem("users") || "[]");
 
-    const currentUserData = usersData.find((user: User) => user.id === currentUser?.id);
+    const currentUserData = usersData.find(
+      (user: User) => user.id === currentUser?.id
+    );
 
     if (currentUserData?.rsaKeys?.publicKey) {
-      const decryptedContent = decrypt(msg.content, currentUserData.rsaKeys.privateKey);
+      const decryptedContent = decrypt(
+        msg.content,
+        currentUserData.rsaKeys.privateKey
+      );
       setSelectedMessage({
         ...msg,
         content: decryptedContent, // Decrypted content
@@ -191,10 +204,10 @@ const DeveloperPage: React.FC = () => {
     }
   };
 
-const getSenderName = (userId: number): string => {
-  const sender = users.find(user => user.id === userId);
-  return sender ? sender.name : "Unknown";
-};
+  const getSenderName = (userId: number): string => {
+    const sender = users.find((user) => user.id === userId);
+    return sender ? sender.name : "Unknown";
+  };
 
   if (!currentUser) {
     return <div>Loading...</div>;
@@ -236,15 +249,15 @@ const getSenderName = (userId: number): string => {
         <div className="userOne-send-received">
           <div
             id="send-option"
-            className={activeSection === 'send' ? 'active' : ''}
-            onClick={() => setActiveSection('send')}
+            className={activeSection === "send" ? "active" : ""}
+            onClick={() => setActiveSection("send")}
           >
             Send
           </div>
           <div
             id="receive-option"
-            className={activeSection === 'inbox' ? 'active' : ''}
-            onClick={() => setActiveSection('inbox')}
+            className={activeSection === "inbox" ? "active" : ""}
+            onClick={() => setActiveSection("inbox")}
           >
             Inbox
           </div>
@@ -256,7 +269,10 @@ const getSenderName = (userId: number): string => {
               <div className="userOne-form-section">
                 <form>
                   <div className="dropdown-container">
-                    <div className="dropdown-trigger" onClick={() => setIsOpen(!isOpen)}>
+                    <div
+                      className="dropdown-trigger"
+                      onClick={() => setIsOpen(!isOpen)}
+                    >
                       {selectedUser ? (
                         <div className="user-card">
                           <img
@@ -280,7 +296,11 @@ const getSenderName = (userId: number): string => {
                           .filter(
                             (user) =>
                               user.id !== currentUser?.id && // Exclude the current user
-                              canAccess(currentUser.role, user.role, accessGraph) // Check access permissions
+                              canAccess(
+                                currentUser.role,
+                                user.role,
+                                accessGraph
+                              ) // Check access permissions
                           )
                           .map((user) => (
                             <div
@@ -321,7 +341,10 @@ const getSenderName = (userId: number): string => {
                   ></textarea>
                 </form>
 
-                <div className="userOne-send-section" onClick={handleSendMessage}>
+                <div
+                  className="userOne-send-section"
+                  onClick={handleSendMessage}
+                >
                   <p>Message sent will be encrypted</p>
                   <img src="/send.png" alt="Send Icon" />
                 </div>
@@ -329,57 +352,61 @@ const getSenderName = (userId: number): string => {
             </div>
           )}
 
-{activeSection === "inbox" && (
-  <div id="inbox" className="userOne-inner-body inbox-container">
-    <div className="inbox-header">
-      <h3>Inbox</h3>
-    </div>
-    {inboxMessages.length > 0 ? (
-        <div className="inbox-content">
-          <div className="inbox-message-list">
-            {inboxMessages.map((msg) => (
-              <div
-                key={msg.id}
-                className={`inbox-message-preview ${
-                  selectedMessage?.id === msg.id ? 'selected' : ''
-                }`}
-                onClick={() => handleMessageClick(msg)}
-              >
-                <div className="message-info">
-                  <div className="message-header">
-                    <p className="message-from">{getSenderName(msg.from)}</p>
-                    <span className="message-time">
-                      {new Date(msg.date).toLocaleDateString()}
-                    </span>
+          {activeSection === "inbox" && (
+            <div id="inbox" className="userOne-inner-body inbox-container">
+              <div className="inbox-header">
+                <h3>Inbox</h3>
+              </div>
+              {inboxMessages.length > 0 ? (
+                <div className="inbox-content">
+                  <div className="inbox-message-list">
+                    {inboxMessages.map((msg) => (
+                      <div
+                        key={msg.id}
+                        className={`inbox-message-preview ${
+                          selectedMessage?.id === msg.id ? "selected" : ""
+                        }`}
+                        onClick={() => handleMessageClick(msg)}
+                      >
+                        <div className="message-info">
+                          <div className="message-header">
+                            <p className="message-from">
+                              {getSenderName(msg.from)}
+                            </p>
+                            <span className="message-time">
+                              {new Date(msg.date).toLocaleDateString()}
+                            </span>
+                          </div>
+                          <p className="message-subject">{msg.subject}</p>
+                        </div>
+                      </div>
+                    ))}
                   </div>
-                  <p className="message-subject">{msg.subject}</p>
-                </div>
-              </div>
-            ))}
-          </div>
 
-          {selectedMessage && (
-            <div className="message-detail">
-              <div className="message-detail-header">
-                <h4>{selectedMessage.subject}</h4>
-                <p className="message-from">
-                  From: {getSenderName(selectedMessage.from)}
-                </p>
-              </div>
-              <div className="message-detail-content">
-                <p className="message-content">{selectedMessage.content}</p>
-              </div>
+                  {selectedMessage && (
+                    <div className="message-detail">
+                      <div className="message-detail-header">
+                        <h4>{selectedMessage.subject}</h4>
+                        <p className="message-from">
+                          From: {getSenderName(selectedMessage.from)}
+                        </p>
+                      </div>
+                      <div className="message-detail-content">
+                        <p className="message-content">
+                          {selectedMessage.content}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="empty-inbox">
+                  <div className="empty-inbox-icon">📬</div>
+                  <p>No messages in your inbox.</p>
+                </div>
+              )}
             </div>
           )}
-        </div>
-      ) : (
-        <div className="empty-inbox">
-          <div className="empty-inbox-icon">📬</div>
-          <p>No messages in your inbox.</p>
-        </div>
-      )}
-  </div>
-)}
         </div>
       </section>
     </div>
